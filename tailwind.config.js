@@ -10,7 +10,9 @@ export default {
       // Configure your color palette here
       "pri": "#00BFFF",
       "seco": "#2C3E50",
+      "third": "#e7f9ff",
       "gold": "#FFD700",
+      "gold-seco": "#FFFADF",
       "back": "#F5F5F5"
     }
   },
