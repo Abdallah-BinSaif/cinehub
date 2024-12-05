@@ -1,7 +1,10 @@
 import React from 'react';
 import {FaStar} from "react-icons/fa";
+import {useNavigate} from "react-router-dom";
 
 const MovieCard = ({movie}) => {
+    const navigate = useNavigate()
+
     const {duration, genre, poster, rating, summary, title, year, _id} = movie
     return (
         <div className="card w-80 shadow-xl border border-gray-200 hover:shadow-2xl transition-shadow">
@@ -24,7 +27,7 @@ const MovieCard = ({movie}) => {
                         <span className="badge badge-outline border-pri text-gold mr-1">{genre}</span>
                 </div>
                 <div className="card-actions justify-end mt-4">
-                    <button className="btn-sm btn bg-pri text-seco hover:bg-gold">See Details</button>
+                    <button onClick={()=> navigate(`/details/${_id}`)} className="btn-sm btn bg-pri text-seco hover:bg-gold">See Details</button>
                 </div>
             </div>
         </div>

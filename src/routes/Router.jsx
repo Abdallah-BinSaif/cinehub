@@ -3,6 +3,7 @@ import Home from "../pages/Home.jsx";
 import MainLayout from "../pages/MainLayout.jsx";
 import AllMovies from "../pages/AllMovies.jsx";
 import AddMovie from "../pages/AddMovie.jsx";
+import MovieDetails from "../pages/MovieDetails.jsx";
 
 
 export const router = createBrowserRouter([
@@ -24,6 +25,10 @@ export const router = createBrowserRouter([
             },{
                 path: "/extra",
                 element: <Home/>
+            },{
+                path: "/details/:id",
+                loader: ({params})=>fetch(`http://localhost:5000/cinemas/${params.id}`),
+                element: <MovieDetails/>
             },
         ]
     },
