@@ -1,14 +1,40 @@
 import React from 'react';
-import {FaStar} from "react-icons/fa";
-import {useLoaderData} from "react-router-dom";
+import {FaClock, FaStar} from "react-icons/fa";
+import {useLoaderData, useNavigate} from "react-router-dom";
 
 const MovieDetails = () => {
+    const navigate = useNavigate();
     const movie = useLoaderData();
-    console.log(movie)
 
-    const {duration, genre, poster, rating, summary, title, year, _id} = movie
+    const {duration, genre, poster, rating, summary, title, year} = movie
+
+    const onDelete = () => {
+        fetch(`http://localhost:5000/cinemas/${id}`,{
+            method: 'DELETE',
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                navigate("/all")
+            })
+    }
+    const onFavorite = () => {
+        fetch(`http://localhost:5000/cinemas/${id}`,{
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify("")
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                navigate("/all")
+            })
+    }
+
     return (
-        <div className="min-h-screen bg-gray-100 flex items-center justify-center py-10 px-4">
+        <div className="bg-gray-100 flex justify-center py-10 px-4">
             <div className="max-w-4xl w-full bg-white rounded-lg shadow-lg overflow-hidden">
                 <div className="flex flex-col md:flex-row">
                     {/* Movie Poster */}
@@ -21,35 +47,44 @@ const MovieDetails = () => {
                     </div>
                     {/* Movie Details */}
                     <div className="md:w-2/3 p-6">
-                        <h1 className="text-3xl font-bold text-gray-800">{title}</h1>
+                        <h1 className="text-3xl font-bold text-pri">{title}</h1>
                         <p className="text-sm text-gray-500 mt-1">Released: {year}</p>
                         <div className="flex items-center mt-4">
-                            <FaStar className="text-yellow-500 mr-2" />
-                            <span className="text-lg font-semibold">{rating}/10</span>
+                            <FaStar className="text-gold mr-2"/>
+                            <span className="text-lg text-third font-semibold">{rating}/10</span>
                         </div>
                         <div className="flex items-center mt-2">
-                            <FaClock className="text-gray-500 mr-2" />
-                            <span className="text-gray-700">{duration} minutes</span>
+                            <FaClock className="text-gold mr-2"/>
+                            <span className="text-third">{duration} minutes</span>
                         </div>
                         <div className="mt-4">
-                            <h2 className="text-lg font-semibold text-gray-800">Genre:</h2>
+                            <h2 className="text-lg font-semibold text-third">Genre:</h2>
                             <div className="flex flex-wrap mt-2">
-                                {genre.map((g, index) => (
-                                    <span
-                                        key={index}
-                                        className="badge badge-outline badge-sm mr-2 mt-1"
-                                    >
-                    {g}
-                  </span>
-                                ))}
+                                <span className="badge badge-outline  border-pri text-gold mr-2 mt-1">{genre}</span>
                             </div>
                         </div>
                         <div className="mt-6">
-                            <h2 className="text-lg font-semibold text-gray-800">Summary:</h2>
+                            <h2 className="text-lg font-semibold text-third">Summary:</h2>
                             <p className="text-gray-700 mt-2">{summary}</p>
                         </div>
-                        <div className="mt-6">
-                            <button className="btn btn-primary">Go Back</button>
+                        {/*<div className="mt-6">*/}
+                        {/*    <button onClick={() => navigate("/all")} className="btn bg-pri text-seco hover:bg-gold">See*/}
+                        {/*        all movies*/}
+                        {/*    </button>*/}
+                        {/*</div>*/}
+                        <div className="mt-6 flex gap-4">
+                            <button
+                                onClick={onDelete}
+                                className="btn btn-error flex-1"
+                            >
+                                Delete Movie
+                            </button>
+                            <button
+                                onClick={onFavorite}
+                                className="btn bg-pri text-seco hover:bg-gold flex-1"
+                            >
+                                Add to Favorite
+                            </button>
                         </div>
                     </div>
                 </div>

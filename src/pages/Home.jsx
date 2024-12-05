@@ -16,7 +16,7 @@ const Home = () => {
     }, []);
     return (
         <div>
-            <div className={"container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 p-8 gap-3"}>
+            <div className={"container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-8 gap-3"}>
                 {
                     movies?.map(item => <MovieCard key={item._id} movie={item}></MovieCard>)
                 }

@@ -4,13 +4,14 @@ import MainLayout from "../pages/MainLayout.jsx";
 import AllMovies from "../pages/AllMovies.jsx";
 import AddMovie from "../pages/AddMovie.jsx";
 import MovieDetails from "../pages/MovieDetails.jsx";
+import NotFound from "../pages/NotFound.jsx";
 
 
 export const router = createBrowserRouter([
     {
         path: "/",
         element: <MainLayout/>,
-        errorElement: <div>Error</div>,
+        errorElement: <NotFound></NotFound>,
         children: [
             {
                 path: "/",

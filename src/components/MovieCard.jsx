@@ -7,7 +7,7 @@ const MovieCard = ({movie}) => {
 
     const {duration, genre, poster, rating, summary, title, year, _id} = movie
     return (
-        <div className="card w-80 shadow-xl border border-gray-200 hover:shadow-2xl transition-shadow">
+        <div className="card shadow-xl border border-gray-200 hover:shadow-2xl transition-shadow">
             <figure className="px-4 pt-4">
                 <img src={poster} alt={title} className="rounded-xl w-full h-56 object-cover" />
             </figure>
