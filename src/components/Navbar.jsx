@@ -2,10 +2,10 @@ import React from 'react';
 import {NavLink} from "react-router-dom";
 
 const lists = <>
-    <li><NavLink className={({isActive})=> isActive ? "bg-pri hover:bg-gold text-seco font-medium":"text-pri hover:bg-third" } to={"/"}>Home</NavLink></li>
-    <li><NavLink className={({isActive})=> isActive ? "bg-pri hover:bg-gold text-seco font-medium":"text-pri hover:bg-third" } to={"/all"}>All Movies</NavLink></li>
-    <li><NavLink className={({isActive})=> isActive ? "bg-pri hover:bg-gold text-seco font-medium":"text-pri hover:bg-third" } to={"/add"}>Add Movie</NavLink></li>
-    <li><NavLink className={({isActive})=> isActive ? "bg-pri hover:bg-gold text-seco font-medium":"text-pri hover:bg-third" } to={"/extra"}>extra route</NavLink></li>
+    <li><NavLink className={({isActive})=> isActive ? "bg-pri hover:bg-gold text-seco font-medium":"text-pri hover:bg-gold" } to={"/"}>Home</NavLink></li>
+    <li><NavLink className={({isActive})=> isActive ? "bg-pri hover:bg-gold text-seco font-medium":"text-pri hover:bg-gold" } to={"/all"}>All Movies</NavLink></li>
+    <li><NavLink className={({isActive})=> isActive ? "bg-pri hover:bg-gold text-seco font-medium":"text-pri hover:bg-gold" } to={"/add"}>Add Movie</NavLink></li>
+    <li><NavLink className={({isActive})=> isActive ? "bg-pri hover:bg-gold text-seco font-medium":"text-pri hover:bg-gold" } to={"/extra"}>extra route</NavLink></li>
 
 </>
 

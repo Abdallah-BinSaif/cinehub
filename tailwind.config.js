@@ -12,7 +12,7 @@ export default {
       "seco": "#2C3E50",
       "third": "#e7f9ff",
       "gold": "#FFD700",
-      "gold-seco": "#FFFADF",
+      "gold-seco": "#ffe9b8",
       "back": "#F5F5F5"
     }
   },
