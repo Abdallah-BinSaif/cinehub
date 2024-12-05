@@ -11,7 +11,10 @@ const AddMovie = () => {
         formState:{errors},
         watch} = useForm()
 
-    const years = [2024, 2023, 2022,2021, 2020, 2019,2018]
+    const genre = ["Adventure", "Action", "Horror", "Drama", "Romance", "Mystery", "Thriller", "Action", "Sci-Fi","Historical", "Family","Fantasy"]
+    const years = [2024, 2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2013, 2012, 2011, 2010, 2009, 2008, 2007, 2006, 2005, 2004, 2003, 2002, 2001, 2000, 1999, 1998, 1997, 1996, 1995, 1994, 1993, 1992, 1991, 1990, 1989, 1988, 1987, 1986, 1985, 1984, 1983, 1982, 1981, 1980]
+
+
     const handleRating = (rate) => {
 
         setRating(rate)
@@ -52,10 +55,10 @@ const AddMovie = () => {
                             icon: "question"
                         });
                     }
-
-
                 })}
                 className={"p-8 bg-third rounded-lg"}>
+
+
                 {/*Input row*/}
                 <div className={"flex flex-col md:flex-row gap-4"}>
                     <div className={"md:w-1/2"}>
@@ -91,10 +94,9 @@ const AddMovie = () => {
                 <div className={"flex flex-col md:flex-row gap-4"}>
                     <select className={"md:w-1/3 rounded-lg bg-seco"} {...register("genre")}>
                         <option disabled={true} value={""}>Select Genre</option>
-                        <option value={"comedy"}>Comedy</option>
-                        <option value={"drama"}>Drama</option>
-                        <option value={"horror"}>Horror</option>
-                        <option value={"animate"}>Animate</option>
+                        {
+                            genre.map((item, idx) => <option key={idx} value={`${item}`}>{item}</option>)
+                        }
                     </select>
                     <div className={"md:w-1/3 space-x-2"}>
                         <input
@@ -123,6 +125,7 @@ const AddMovie = () => {
                 <div className={"flex flex-col justify-center items-center"}>
                     <label>Rate this Movie</label>
                     <Rating
+                        iconsCount={10}
                         onClick={handleRating}
                     ></Rating>
                 </div>

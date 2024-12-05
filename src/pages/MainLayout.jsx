@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar.jsx";
 
 const MainLayout = () => {
     return (
-        <div className={"min-h-screen bg-[#fff]"}>
+        <div className={"min-h-screen"}>
             <Navbar/>
             <Outlet/>
 

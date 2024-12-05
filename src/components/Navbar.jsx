@@ -14,7 +14,7 @@ const Navbar = () => {
         <div className="navbar bg-base-100">
             <div className="navbar-start">
                 <div className="dropdown">
-                    <div tabIndex={0} role="button" className="btn btn-ghost hover:bg-third lg:hidden">
+                    <div tabIndex={0} role="button" className="btn btn-ghost hover:bg-gold hover:text-seco lg:hidden">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-5 w-5"
@@ -34,7 +34,7 @@ const Navbar = () => {
                         {lists}
                     </ul>
                 </div>
-                <a className="btn btn-ghost hover:bg-third text-xl">CineHub</a>
+                <a className="btn btn-ghost hover:bg-gold hover:text-seco text-xl">CineHub</a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -42,8 +42,8 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end gap-4">
-                <a className="btn bg-third hover:bg-pri">Login</a>
-                <a className="btn bg-third hover:bg-pri">Sign up</a>
+                <a className="btn bg-pri hover:bg-gold text-seco">Login</a>
+                <a className="btn bg-pri hover:bg-gold text-seco">Sign up</a>
             </div>
         </div>
     );
