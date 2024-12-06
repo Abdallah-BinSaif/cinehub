@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {FcGoogle} from "react-icons/fc";
 import {useForm} from "react-hook-form";
 import {authContext} from "../AuthProvider.jsx";
@@ -10,8 +10,19 @@ const Registration = () => {
         handleSubmit,
         formState:{errors},
     } = useForm()
-    const {createUser}=useContext(authContext);
+    const navigate = useNavigate();
+    const {createUser,updateUser, signInWithGoogle}=useContext(authContext);
+    const handleGoogleRegister = () => {
+        signInWithGoogle().then(result => {
+            const user = result.user;
+            navigate("/")
+            Swal.fire("Register with google Successful")
 
+            console.log(user)
+        }).catch(err=>{
+            console.log(err.code)
+        })
+    }
     return (
         <div className="hero bg-base-200">
             <div className="hero-content md:w-4/6 lg:w-2/6 flex-col">
@@ -22,8 +33,9 @@ const Registration = () => {
                     <form onSubmit={handleSubmit((data) => {
                         const {name, email, password, photo}=data
                         createUser(email, password).then(data=>{
+                            updateUser({displayName: name,photoURL: photo}).then().catch(err=>console.log(err.code))
                             const {uid} = data?.user
-                            const {lastSignInTime, creationTime} = data?.user.metadata
+                            const {lastSignInTime, creationTime} = data?.user?.metadata
                             Swal.fire("Registration Completed")
                         }).catch(err => {
                             console.log(err.code)
@@ -100,12 +112,12 @@ const Registration = () => {
                             <p className="label-text-alt">Already have an account?
                                 <Link
                                     className={"underline"}
-                                    to={"/register"}>login</Link></p>
+                                    to={"/login"}>login</Link></p>
                         </label>
                     </form>
                     <div className={"divider"}>OR</div>
                     <div className="form-control mb-6 mx-7">
-                        <button className="btn btn-outline">Google<FcGoogle></FcGoogle></button>
+                        <button onClick={handleGoogleRegister} className="btn btn-outline">Google<FcGoogle></FcGoogle></button>
                     </div>
                 </div>
             </div>

@@ -7,6 +7,8 @@ import MovieDetails from "../pages/MovieDetails.jsx";
 import NotFound from "../pages/NotFound.jsx";
 import Login from "../components/authentication/Login.jsx";
 import Registration from "../components/authentication/Registration.jsx";
+import Private from "../components/authentication/Private.jsx";
+import Favorites from "../pages/Favorites.jsx";
 
 
 export const router = createBrowserRouter([
@@ -24,14 +26,17 @@ export const router = createBrowserRouter([
                 loader: ()=> fetch("http://localhost:5000/cinemas")
             },{
                 path: "/add",
-                element: <AddMovie/>
+                element: <Private><AddMovie/></Private>
+            },{
+                path: "/favorites",
+                element: <Private><Favorites/></Private>
             },{
                 path: "/extra",
                 element: <Home/>
             },{
                 path: "/details/:id",
                 loader: ({params})=>fetch(`http://localhost:5000/cinemas/${params.id}`),
-                element: <MovieDetails/>
+                element: <Private><MovieDetails/></Private>
             },{
                 path: "/login",
                 element: <Login></Login>

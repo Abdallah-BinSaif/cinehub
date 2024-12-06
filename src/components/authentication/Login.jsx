@@ -1,14 +1,31 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {useForm} from "react-hook-form";
-import {Link} from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 import {FcGoogle} from "react-icons/fc";
+import {authContext} from "../AuthProvider.jsx";
+import Swal from "sweetalert2";
 
 const Login = () => {
     const {register,
         handleSubmit,
         formState: {errors},
     } = useForm()
-    console.log(errors)
+    const {signInUser,signInWithGoogle} = useContext(authContext)
+    const navigate = useNavigate();
+    const location = useLocation()
+
+    const handleGoogleSignIn = () => {
+        signInWithGoogle().then(result => {
+            const user = result.user;
+            navigate(location?.state?.from ? `${location.state.from}`: "/")
+            Swal.fire("Login with google Successful")
+
+            console.log(user)
+        }).catch(err=>{
+            console.log(err.code)
+        })
+    }
+
     return (
         <div className="hero bg-base-200">
             <div className="hero-content md:w-4/6 lg:w-2/6 flex-col">
@@ -17,6 +34,17 @@ const Login = () => {
                 </div>
                 <div className="card bg-base-100 w-full shrink-0 shadow-2xl">
                     <form onSubmit={handleSubmit((data)=>{
+                        const {email, password}=data
+                        signInUser(email, password).then(userdata=>{
+                            console.log(userdata)
+                            Swal.fire("Login Successful")
+                            navigate(location?.state?.from ? `${location.state.from}`: "/")
+                        })
+                            .catch(err => {
+                                console.log(err)
+                                Swal.fire("Login Failed")
+                            })
+
                         console.log(data)
                     })} className="card-body">
 
@@ -62,7 +90,7 @@ const Login = () => {
                     </form>
                     <div className={"divider"}>OR</div>
                     <div className="form-control mb-6 mx-7">
-                        <button className="btn btn-outline">Google<FcGoogle></FcGoogle></button>
+                        <button onClick={handleGoogleSignIn} className="btn btn-outline">Google<FcGoogle></FcGoogle></button>
                     </div>
                 </div>
             </div>
