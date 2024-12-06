@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import MovieCard from "../components/MovieCard.jsx";
 import {useNavigate} from "react-router-dom";
 import Banner from "../components/Banner.jsx";
-import CelebrityCard from "../components/CelebrityCard.jsx";
+import CelebrityCard from "../components/celebrity/CelebrityCard.jsx";
 
 const Home = () => {
     const navigate = useNavigate()

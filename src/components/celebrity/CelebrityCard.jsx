@@ -11,14 +11,14 @@ const CelebrityCard = ({ celebrity }) => {
             </figure>
             <div className="card-body text-center p-4">
                 <h2 className="card-title text-xl font-semibold">{name}</h2>
-                <p className="text-gray-600">Awards: {awards}</p>
+                <p>Awards: {awards}</p>
                 <div className="flex justify-center space-x-4 mt-4">
                     {socialMedia.instagram && (
                         <a
                             href={socialMedia.instagram}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-pink-600 text-2xl hover:text-pink-800"
+                            className="text-2xl text-pri hover:text-gold"
                         >
                             <FaInstagram />
                         </a>
@@ -28,7 +28,7 @@ const CelebrityCard = ({ celebrity }) => {
                             href={socialMedia.twitter}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-blue-500 text-2xl hover:text-blue-700"
+                            className="text-2xl text-pri hover:text-gold"
                         >
                             <FaTwitter />
                         </a>
