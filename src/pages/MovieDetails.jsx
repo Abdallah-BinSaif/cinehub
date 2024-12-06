@@ -6,9 +6,9 @@ const MovieDetails = () => {
     const navigate = useNavigate();
     const movie = useLoaderData();
 
-    const {duration, genre, poster, rating, summary, title, year} = movie
+    const {duration, genre, poster, rating, summary, title, year, _id} = movie
 
-    const onDelete = () => {
+    const handleDelete = (id) => {
         fetch(`http://localhost:5000/cinemas/${id}`,{
             method: 'DELETE',
         })
@@ -74,7 +74,7 @@ const MovieDetails = () => {
                         {/*</div>*/}
                         <div className="mt-6 flex gap-4">
                             <button
-                                onClick={onDelete}
+                                onClick={()=>handleDelete(_id)}
                                 className="btn btn-error flex-1"
                             >
                                 Delete Movie
