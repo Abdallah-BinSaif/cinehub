@@ -40,15 +40,6 @@ const Login = () => {
                                 type="password"
                                 {...register("password", {
                                     required: "Give a Password",
-                                    minLength: {
-                                        value: 6,
-                                        message: "minimum 6 character length"
-                                    },
-                                    pattern: {
-                                        value: /^(?=.*[a-z])(?=.*[A-Z]).(?=.*\d).+$/,
-                                        message: "Password should contain a uppercase, a lowercase and a number"
-                                    }
-
                                 })}
                                 placeholder="password"
                                 className="input input-bordered" required/>
@@ -62,8 +53,11 @@ const Login = () => {
                             <button className="btn btn-primary">Login</button>
                         </div>
                         <label className="label">
-                            <p className="label-text-alt">new here? <Link className={"underline"}
-                                                                          to={"/register"}>Register</Link></p>
+                            <p className="label-text-alt">new in CineMovie?
+                                <Link
+                                className={"underline"}
+                                to={"/register"}>Register</Link>
+                            </p>
                         </label>
                     </form>
                     <div className={"divider"}>OR</div>
