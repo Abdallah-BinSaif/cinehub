@@ -14,7 +14,8 @@ export default {
       "footer": "#8b8a0b",
       "gold": "#FFD700",
       "gold-seco": "#ffe9b8",
-      "back": "#F5F5F5"
+      "back": "#F5F5F5",
+      "red": "rgb(255,87,87)"
     }
   },
   plugins: [

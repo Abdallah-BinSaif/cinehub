@@ -40,7 +40,7 @@ const Home = () => {
             <div className={"bg-gold-seco py-20 my-8"}>
                 <div className={"flex overflow-hidden gap-8 container mx-auto"}>
                     {
-                        celebrity?.map(item => <CelebrityCard celebrity={item}/>)
+                        celebrity?.map((item, idx) => <CelebrityCard key={idx} celebrity={item}/>)
                     }
 
                 </div>
