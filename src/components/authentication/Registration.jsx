@@ -17,10 +17,8 @@ const Registration = () => {
             const user = result.user;
             navigate("/")
             Swal.fire("Register with google Successful")
-
-            console.log(user)
         }).catch(err=>{
-            console.log(err.code)
+            Swal.fire(`${err.code}`)
         })
     }
     return (
@@ -37,8 +35,10 @@ const Registration = () => {
                             const {uid} = data?.user
                             const {lastSignInTime, creationTime} = data?.user?.metadata
                             Swal.fire("Registration Completed")
+                            navigate("/")
                         }).catch(err => {
-                            console.log(err.code)
+                            Swal.fire(`${err.code}`)
+
                         })
 
                     })} className="card-body">

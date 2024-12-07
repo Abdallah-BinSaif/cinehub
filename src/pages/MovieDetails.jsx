@@ -1,10 +1,13 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {FaClock, FaStar} from "react-icons/fa";
 import {useLoaderData, useNavigate} from "react-router-dom";
+import {authContext} from "../components/AuthProvider.jsx";
 
 const MovieDetails = () => {
     const navigate = useNavigate();
     const movie = useLoaderData();
+    const {currentUser} = useContext(authContext)
+
 
     const {duration, genre, poster, rating, summary, title, year, _id} = movie
 
@@ -18,18 +21,30 @@ const MovieDetails = () => {
                 navigate("/all")
             })
     }
-    const onFavorite = () => {
-        fetch(`http://localhost:5000/cinemas/${id}`,{
-            method: "POST",
+    const handleFavorite = () => {
+        const favId = _id+currentUser.email;
+        console.log(favId)
+        fetch(`http://localhost:5000/favorites`,{
+            method: "PATCH",
             headers: {
                 "content-type": "application/json"
             },
-            body: JSON.stringify("")
+            body: JSON.stringify({
+                favId,
+                duration,
+                genre,
+                poster,
+                rating,
+                summary,
+                title,
+                year,
+                favoriteEmail: currentUser.email
+            })
         })
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                navigate("/all")
+                // navigate("/all")
             })
     }
 
@@ -80,7 +95,7 @@ const MovieDetails = () => {
                                 Delete Movie
                             </button>
                             <button
-                                onClick={onFavorite}
+                                onClick={handleFavorite}
                                 className="btn bg-pri text-seco hover:bg-gold flex-1"
                             >
                                 Add to Favorite
