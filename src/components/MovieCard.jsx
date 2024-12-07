@@ -2,7 +2,7 @@ import React from 'react';
 import {FaStar} from "react-icons/fa";
 import {useLocation, useNavigate} from "react-router-dom";
 
-const MovieCard = ({movie}) => {
+const MovieCard = ({movie, handleFavDelete}) => {
     const navigate = useNavigate()
     const location = useLocation();
     console.log(movie)
@@ -31,7 +31,7 @@ const MovieCard = ({movie}) => {
                 <div className="card-actions justify-end mt-4">
                     {
                         location.pathname === "/favorites"
-                            ? <button className="btn-sm btn bg-pri text-seco hover:bg-gold">Delete Favorite</button>
+                            ? <button onClick={()=>handleFavDelete(_id)} className="btn-sm btn bg-pri text-seco hover:bg-gold">Delete Favorite</button>
                             : <button onClick={()=> navigate(`/details/${_id}`)} className="btn-sm btn bg-pri text-seco hover:bg-gold">See Details</button>
                     }
 
