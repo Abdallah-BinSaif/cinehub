@@ -4,10 +4,13 @@ import MovieCard from "../components/MovieCard.jsx";
 
 const AllMovies = () => {
     const fetchMovies = useLoaderData();
-    const [movies, setMovies] = useState(fetchMovies)
-    const [search, setSearch] = useState();
+    const [movies, setMovies] = useState(null)
+    const [search, setSearch] = useState({});
     useEffect(() => {
-        fetch(`http://localhost:5000/cinemas?searchParams=${search}`).then(res=>res.json()).then(data => setMovies(data))
+
+        fetch(`http://localhost:5000/cinemas?searchParams=${search}`)
+            .then(res=>res.json())
+            .then(data => setMovies(data))
     }, [search]);
 
     // const handleSearch = (e) => {

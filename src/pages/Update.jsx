@@ -7,7 +7,7 @@ import {useLoaderData} from "react-router-dom";
 
 const Update = () => {
     const Mdata = useLoaderData();
-    console.log(Mdata)
+
     const {currentUser} = useContext(authContext)
     const [rating, setRating] = useState(0)
     const {
@@ -46,34 +46,30 @@ const Update = () => {
                 onSubmit={handleSubmit((formData) => {
                     const addedMovie = {...formData, rating, year, duration, addedBy:currentUser?.email}
                     if(rating){
-                        fetch("http://localhost:5000/cinemas",{
-                            method: "POST",
+                        fetch(`http://localhost:5000/cinemas/${Mdata._id}`,{
+                            method: "PATCH",
                             headers:{
                                 "content-type": "application/json"
                             },
                             body: JSON.stringify(addedMovie)
                         }).then(res => res.json())
                             .then(data => {
-                                const favId = data?.insertedId + currentUser.email;
-                                fetch("http://localhost:5000/favorites",{
-                                    method: "PATCH",
-                                    headers: {
-                                        "content-type": "application/json"
-                                    },
-                                    body: JSON.stringify({favId,
-                                        ...formData,
-                                        duration,
-                                        rating,
-                                        year,
-                                        favoriteEmail: currentUser?.email})
-                                }).then(res => res.json()).then(data => console.log(data))
-                                console.log(data)
-                                if(data.acknowledged){
+                                if(data.modifiedCount){
                                     Swal.fire({
-                                        title: "Added",
-                                        text: "The movie added to the database.",
+                                        title: "Modified",
+                                        text: "Modified The movie to the database.",
                                         icon: "success"
                                     });
+                                }else if(!data.matchedCount){
+                                    Swal.fire({
+                                        title: "Nothing to Found",
+                                        icon: "error"
+                                    })
+                                }else{
+                                    Swal.fire({
+                                        title: "Nothing to Modify",
+                                        icon: "question"
+                                    })
                                 }
                             })
                     }else{
@@ -174,7 +170,7 @@ const Update = () => {
                     <p className={"text-red-500"}>{errors.summary?.message}</p>
                 </div><br/>
 
-                <input className={"btn bg-gold-seco hover:bg-gold w-full"} type={"submit"} value={"Add Movie"}/>
+                <input className={"btn bg-gold-seco hover:bg-gold w-full"} type={"submit"} value={"Update Movie"}/>
             </form>
         </div>
     );

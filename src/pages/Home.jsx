@@ -4,11 +4,25 @@ import {useNavigate} from "react-router-dom";
 import Banner from "../components/Banner.jsx";
 import logo from "../../public/logo.webp"
 import CelebrityCard from "../components/celebrity/CelebrityCard.jsx";
+import {MdLightMode, MdOutlineLightMode} from "react-icons/md";
 
 const Home = () => {
+
+
     const navigate = useNavigate()
     const [movies, setMovies] = useState();
     const [celebrity, setCelebrity] = useState([])
+    const [theme, setTheme] = useState(false)
+
+    const handleTheme = () => {
+        if(theme){
+            document.documentElement.setAttribute("data-theme", "dark")
+            setTheme(!theme)
+        }else{
+            document.documentElement.setAttribute("data-theme", "light")
+            setTheme(!theme)
+        }
+    }
     useEffect(() => {
         fetch("http://localhost:5000/cinemas")
             .then(res => res.json())
@@ -26,6 +40,10 @@ const Home = () => {
     }, []);
     return (
         <div>
+            <div className={"flex justify-end items-center"}>
+                Theme
+                <button onClick={handleTheme} className={"p-2 text-xl"}>{theme? <MdLightMode/>  : <MdOutlineLightMode/>}</button>
+            </div>
             <div className={"container mx-auto"}>
                 <Banner/>
             </div>
@@ -53,7 +71,7 @@ const Home = () => {
 
             <div className={"flex justify-between container mx-auto my-32"}>
                 <div className={"flex flex-col items-start gap-4 justify-center"}>
-                    <div className={"flex items-center text-4xl text-gold font-bold"}>
+                    <div className={"flex items-center text-4xl text-gold font-bold gap-4"}>
                         <img className={"w-16 h-16"} src={logo}/>
                         <p>CineHub</p>
                     </div>
