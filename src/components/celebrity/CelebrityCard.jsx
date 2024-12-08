@@ -5,7 +5,7 @@ const CelebrityCard = ({ celebrity }) => {
     const { name, photo, awards, socialMedia } = celebrity;
 
     return (
-        <div className="w-4/12 p-8 border-8 border-pri shadow-xl rounded-full flex flex-col items-center">
+        <div className="w-full md:w-4/12 p-8 border-8 border-pri shadow-xl rounded-3xl md:rounded-full flex flex-col items-center">
             <figure className="h-48 w-48 rounded-full border-2 border-pri">
                 <img src={photo} alt={name} className="object-cover w-full h-full rounded-full" />
             </figure>

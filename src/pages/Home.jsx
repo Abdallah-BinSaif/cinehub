@@ -61,7 +61,7 @@ const Home = () => {
 
             <div className={"bg-gold-seco py-20 my-8"}>
                 <h3 className={"text-3xl mb-6 font-bold text-pri container mx-auto"}>Most Awarded Celebrities</h3>
-                <div className={"flex overflow-scroll gap-8 container mx-auto"}>
+                <div className={"flex flex-col md:flex-row overflow-scroll gap-8 container mx-auto"}>
                     {
                         celebrity?.map((item, idx) => <CelebrityCard key={idx} celebrity={item}/>)
                     }
@@ -69,9 +69,9 @@ const Home = () => {
                 </div>
             </div>
 
-            <div className={"flex justify-between container mx-auto my-32"}>
+            <div className={"flex flex-col md:flex-row items-center gap-16 justify-between container mx-auto my-32"}>
                 <div className={"flex flex-col items-start gap-4 justify-center"}>
-                    <div className={"flex items-center text-4xl text-gold font-bold gap-4"}>
+                    <div className={"flex items-center justify-center text-4xl text-gold font-bold gap-4"}>
                         <img className={"w-16 h-16"} src={logo}/>
                         <p>CineHub</p>
                     </div>
