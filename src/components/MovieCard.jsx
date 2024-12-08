@@ -5,7 +5,6 @@ import {useLocation, useNavigate} from "react-router-dom";
 const MovieCard = ({movie, handleFavDelete}) => {
     const navigate = useNavigate()
     const location = useLocation();
-    console.log(movie)
 
     const {duration, genre, poster, rating, summary, title, year, _id} = movie
     return (

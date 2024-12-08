@@ -1,122 +1,92 @@
 [
   {
-    "name": "Leonardo DiCaprio",
-    "photo": "https://via.placeholder.com/150",
-    "profession": "Actor",
-    "nationality": "American",
-    "knownFor": ["Titanic", "Inception", "The Revenant"],
-    "awards": 3,
-    "socialMedia": {
-      "instagram": "https://instagram.com/leonardo",
-      "twitter": "https://twitter.com/leonardo"
-    }
-  },
-  {
-    "name": "Scarlett Johansson",
-    "photo": "https://via.placeholder.com/150",
-    "profession": "Actress",
-    "nationality": "American",
-    "knownFor": ["Black Widow", "Lucy", "Marriage Story"],
-    "awards": 2,
-    "socialMedia": {
-      "instagram": "https://instagram.com/scarlett",
-      "twitter": "https://twitter.com/scarlett"
-    }
-  },
-  {
     "name": "Robert Downey Jr.",
-    "photo": "https://via.placeholder.com/150",
-    "profession": "Actor",
-    "nationality": "American",
-    "knownFor": ["Iron Man", "Sherlock Holmes", "Avengers"],
-    "awards": 3,
+    "photo": "https://i.ibb.co/b7JcpZb/Robert-Downey-Jr.jpg",
+    "awards": 5,
     "socialMedia": {
       "instagram": "https://instagram.com/robertdowneyjr",
-      "twitter": "https://twitter.com/robertdowneyjr"
+      "twitter": "https://twitter.com/RobertDowneyJr"
     }
   },
   {
-    "name": "Emma Watson",
-    "photo": "https://via.placeholder.com/150",
-    "profession": "Actress",
-    "nationality": "British",
-    "knownFor": ["Harry Potter", "Beauty and the Beast", "Little Women"],
-    "awards": 1,
+    "name": "Leonardo DiCaprio",
+    "photo": "https://i.ibb.co/bN0V3Cq/Leonardo-Di-Caprio.jpg",
+    "awards": 4,
     "socialMedia": {
-      "instagram": "https://instagram.com/emmawatson",
-      "twitter": "https://twitter.com/emmawatson"
+      "instagram": "https://instagram.com/leonardodicaprio",
+      "twitter": "https://twitter.com/LeoDiCaprio"
     }
   },
   {
     "name": "Chris Hemsworth",
-    "photo": "https://via.placeholder.com/150",
-    "profession": "Actor",
-    "nationality": "Australian",
-    "knownFor": ["Thor", "Extraction", "Rush"],
-    "awards": 1,
-    "socialMedia": {
-      "instagram": "https://instagram.com/chrish",
-      "twitter": "https://twitter.com/chrish"
-    }
-  },
-  {
-    "name": "Zendaya",
-    "photo": "https://via.placeholder.com/150",
-    "profession": "Actress",
-    "nationality": "American",
-    "knownFor": ["Euphoria", "Spider-Man", "Dune"],
+    "photo": "https://i.ibb.co/XJLCVGY/Chris-Hemsworth.jpg",
     "awards": 3,
     "socialMedia": {
-      "instagram": "https://instagram.com/zendaya",
-      "twitter": "https://twitter.com/zendaya"
+      "instagram": "https://instagram.com/chrishemsworth",
+      "twitter": "https://twitter.com/chrishemsworth"
     }
   },
   {
     "name": "Tom Holland",
-    "photo": "https://via.placeholder.com/150",
-    "profession": "Actor",
-    "nationality": "British",
-    "knownFor": ["Spider-Man", "Uncharted", "The Impossible"],
-    "awards": 2,
+    "photo": "https://i.ibb.co/BZVFjS4/Tom-Holland.jpg",
+    "awards": 4,
     "socialMedia": {
-      "instagram": "https://instagram.com/tomholland",
-      "twitter": "https://twitter.com/tomholland"
+      "instagram": "https://instagram.com/tomholland2013",
+      "twitter": "https://twitter.com/tomholland1996"
     }
   },
   {
-    "name": "Gal Gadot",
-    "photo": "https://via.placeholder.com/150",
-    "profession": "Actress",
-    "nationality": "Israeli",
-    "knownFor": ["Wonder Woman", "Fast & Furious", "Red Notice"],
-    "awards": 1,
+    "name": "Will Smith",
+    "photo": "https://i.ibb.co/KqGT1fP/Will-Smith.jpg",
+    "awards": 6,
     "socialMedia": {
-      "instagram": "https://instagram.com/galgadot",
-      "twitter": "https://twitter.com/galgadot"
+      "instagram": "https://instagram.com/willsmith",
+      "twitter": "https://twitter.com/WillSmith"
+    }
+  },
+  {
+    "name": "Brad Pitt",
+    "photo": "https://i.ibb.co/vQPQbss/Brad-Pitt.jpg",
+    "awards": 6,
+    "socialMedia": {
+      "instagram": "https://instagram.com/bradpitt",
+      "twitter": "https://twitter.com/bradpitt"
+    }
+  },
+  {
+    "name": "Ryan Reynolds",
+    "photo": "https://i.ibb.co/6BVYCGL/Ryan-Reynolds.jpg",
+    "awards": 5,
+    "socialMedia": {
+      "instagram": "https://instagram.com/vancityreynolds",
+      "twitter": "https://twitter.com/VancityReynolds"
+    }
+  },
+  {
+    "name": "Chris Evans",
+    "photo": "https://i.ibb.co/MVX4yKp/Chris-Evans.jpg",
+    "awards": 3,
+    "socialMedia": {
+      "instagram": "https://instagram.com/chrisevans",
+      "twitter": "https://twitter.com/ChrisEvans"
     }
   },
   {
     "name": "Dwayne Johnson",
-    "photo": "https://via.placeholder.com/150",
-    "profession": "Actor",
-    "nationality": "American",
-    "knownFor": ["Jumanji", "Fast & Furious", "Black Adam"],
-    "awards": 2,
+    "photo": "https://i.ibb.co/Rygvx4P/Dwayne-Johnson.jpg",
+    "awards": 5,
     "socialMedia": {
       "instagram": "https://instagram.com/therock",
-      "twitter": "https://twitter.com/therock"
+      "twitter": "https://twitter.com/TheRock"
     }
   },
   {
-    "name": "Priyanka Chopra",
-    "photo": "https://via.placeholder.com/150",
-    "profession": "Actress",
-    "nationality": "Indian",
-    "knownFor": ["Quantico", "The White Tiger", "Baywatch"],
-    "awards": 4,
+    "name": "Hugh Jackman",
+    "photo": "https://i.ibb.co/QJWhZLg/Hugh-Jackman.jpg",
+    "awards": 2,
     "socialMedia": {
-      "instagram": "https://instagram.com/priyankachopra",
-      "twitter": "https://twitter.com/priyankachopra"
+      "instagram": "https://instagram.com/thehughjackman",
+      "twitter": "https://twitter.com/RealHughJackman"
     }
   }
 ]

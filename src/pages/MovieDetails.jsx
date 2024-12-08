@@ -102,9 +102,15 @@ const MovieDetails = () => {
                                 </button>
                                 <button
                                     onClick={handleFavorite}
-                                    className="btn bg-pri text-seco hover:bg-gold flex-1"
+                                    className="btn bg-pri text-seco hover:text-third hover:bg-seco flex-1"
                                 >
                                     Add to Favorite
+                                </button>
+                                <button
+                                    onClick={()=>navigate(`/update/${_id}`)}
+                                    className="btn bg-gold text-seco hover:bg-gold-seco flex-1"
+                                >
+                                    Update Movie
                                 </button>
                             </div>
                         </div>
@@ -112,7 +118,7 @@ const MovieDetails = () => {
                 </div>
             </div>
             <button
-                onClick={()=> navigate("/all")}
+                onClick={() => navigate("/all")}
                 className="btn bg-pri my-10 mx-4 text-seco hover:bg-gold flex-1"
             >
                 See all movie

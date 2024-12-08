@@ -9,6 +9,7 @@ import Login from "../components/authentication/Login.jsx";
 import Registration from "../components/authentication/Registration.jsx";
 import Private from "../components/authentication/Private.jsx";
 import Favorites from "../pages/Favorites.jsx";
+import Update from "../pages/Update.jsx";
 
 
 export const router = createBrowserRouter([
@@ -43,6 +44,10 @@ export const router = createBrowserRouter([
             },{
                 path: "/register",
                 element: <Registration></Registration>
+            },{
+                path: "/update/:id",
+                loader: ({params})=>fetch(`http://localhost:5000/cinemas/${params.id}`),
+                element: <Update></Update>
             },
         ]
     },
