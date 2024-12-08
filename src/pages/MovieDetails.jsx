@@ -13,7 +13,7 @@ const MovieDetails = () => {
     const {duration, genre, poster, rating, summary, title, year, _id} = movie
 
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/cinemas/${id}`,{
+        fetch(`https://movie-portal-server-pink-one.vercel.app/cinemas/${id}`,{
             method: 'DELETE',
         })
             .then(res => res.json())
@@ -26,7 +26,7 @@ const MovieDetails = () => {
     const handleFavorite = () => {
         const favId = _id+currentUser.email;
         console.log(favId)
-        fetch(`http://localhost:5000/favorites`,{
+        fetch(`https://movie-portal-server-pink-one.vercel.app/favorites`,{
             method: "PATCH",
             headers: {
                 "content-type": "application/json"

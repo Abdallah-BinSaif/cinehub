@@ -46,7 +46,7 @@ const Update = () => {
                 onSubmit={handleSubmit((formData) => {
                     const addedMovie = {...formData, rating, year, duration, addedBy:currentUser?.email}
                     if(rating){
-                        fetch(`http://localhost:5000/cinemas/${Mdata._id}`,{
+                        fetch(`https://movie-portal-server-pink-one.vercel.app/cinemas/${Mdata._id}`,{
                             method: "PATCH",
                             headers:{
                                 "content-type": "application/json"

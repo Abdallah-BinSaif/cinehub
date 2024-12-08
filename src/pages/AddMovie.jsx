@@ -36,7 +36,7 @@ const AddMovie = () => {
                 onSubmit={handleSubmit((formData) => {
                     const addedMovie = {...formData, rating, year, duration, addedBy:currentUser?.email}
                     if(rating){
-                        fetch("http://localhost:5000/cinemas",{
+                        fetch("https://movie-portal-server-pink-one.vercel.app/cinemas",{
                             method: "POST",
                             headers:{
                                 "content-type": "application/json"
@@ -45,7 +45,7 @@ const AddMovie = () => {
                         }).then(res => res.json())
                             .then(data => {
                                 const favId = data?.insertedId + currentUser.email;
-                                fetch("http://localhost:5000/favorites",{
+                                fetch("https://movie-portal-server-pink-one.vercel.app/favorites",{
                                     method: "PATCH",
                                     headers: {
                                         "content-type": "application/json"

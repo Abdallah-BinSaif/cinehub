@@ -10,6 +10,7 @@ import Registration from "../components/authentication/Registration.jsx";
 import Private from "../components/authentication/Private.jsx";
 import Favorites from "../pages/Favorites.jsx";
 import Update from "../pages/Update.jsx";
+import BehindScenes from "../pages/BehindScenes.jsx";
 
 
 export const router = createBrowserRouter([
@@ -24,7 +25,7 @@ export const router = createBrowserRouter([
             },{
                 path: "/all",
                 element: <AllMovies/>,
-                loader: ()=> fetch("http://localhost:5000/cinemas")
+                loader: ()=> fetch("https://movie-portal-server-pink-one.vercel.app/cinemas")
             },{
                 path: "/add",
                 element: <Private><AddMovie/></Private>
@@ -32,11 +33,11 @@ export const router = createBrowserRouter([
                 path: "/favorites",
                 element: <Private><Favorites/></Private>
             },{
-                path: "/extra",
-                element: <Home/>
+                path: "/behind",
+                element: <BehindScenes/>
             },{
                 path: "/details/:id",
-                loader: ({params})=>fetch(`http://localhost:5000/cinemas/${params.id}`),
+                loader: ({params})=>fetch(`https://movie-portal-server-pink-one.vercel.app/cinemas/${params.id}`),
                 element: <Private><MovieDetails/></Private>
             },{
                 path: "/login",
@@ -46,8 +47,8 @@ export const router = createBrowserRouter([
                 element: <Registration></Registration>
             },{
                 path: "/update/:id",
-                loader: ({params})=>fetch(`http://localhost:5000/cinemas/${params.id}`),
-                element: <Update></Update>
+                loader: ({params})=>fetch(`https://movie-portal-server-pink-one.vercel.app/cinemas/${params.id}`),
+                element: <Private><Update></Update></Private>
             },
         ]
     },

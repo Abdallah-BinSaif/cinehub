@@ -24,7 +24,7 @@ const Home = () => {
         }
     }
     useEffect(() => {
-        fetch("http://localhost:5000/cinemas")
+        fetch("https://movie-portal-server-pink-one.vercel.app/cinemas")
             .then(res => res.json())
             .then(data => {
                 const sorted = data.sort((a , b)=> b.rating - a.rating)

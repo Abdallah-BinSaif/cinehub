@@ -7,7 +7,7 @@ const lists = <>
     <li><NavLink className={({isActive})=> isActive ? "bg-pri hover:bg-gold text-seco font-medium":"text-pri hover:bg-gold" } to={"/all"}>All Movies</NavLink></li>
     <li><NavLink className={({isActive})=> isActive ? "bg-pri hover:bg-gold text-seco font-medium":"text-pri hover:bg-gold" } to={"/add"}>Add Movie</NavLink></li>
     <li><NavLink className={({isActive})=> isActive ? "bg-pri hover:bg-gold text-seco font-medium":"text-pri hover:bg-gold" } to={"/favorites"}>My Favorites</NavLink></li>
-    <li><NavLink className={({isActive})=> isActive ? "bg-pri hover:bg-gold text-seco font-medium":"text-pri hover:bg-gold" } to={"/extra"}>extra route</NavLink></li>
+    <li><NavLink className={({isActive})=> isActive ? "bg-pri hover:bg-gold text-seco font-medium":"text-pri hover:bg-gold" } to={"/behind"}>Behind the Scenes</NavLink></li>
 
 </>
 

@@ -8,7 +8,7 @@ const AllMovies = () => {
     const [search, setSearch] = useState({});
     useEffect(() => {
 
-        fetch(`http://localhost:5000/cinemas?searchParams=${search}`)
+        fetch(`https://movie-portal-server-pink-one.vercel.app/cinemas?searchParams=${search}`)
             .then(res=>res.json())
             .then(data => setMovies(data))
     }, [search]);

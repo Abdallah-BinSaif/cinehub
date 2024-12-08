@@ -8,14 +8,14 @@ const Favorites = () => {
     const {currentUser} = useContext(authContext)
     const [favorites, setFavorites] = useState();
     useEffect(() => {
-        fetch(`http://localhost:5000/favorites?email=${currentUser.email}`)
+        fetch(`https://movie-portal-server-pink-one.vercel.app/favorites?email=${currentUser.email}`)
             .then(res => res.json())
             .then(data => {
                 setFavorites(data)
             })
     }, []);
     const handleFavDelete = (id) => {
-        fetch(`http://localhost:5000/favorites/${id}`,{
+        fetch(`https://movie-portal-server-pink-one.vercel.app/favorites/${id}`,{
             method: "DELETE"
         })
             .then(res => res.json())
