@@ -13,9 +13,9 @@ const lists = <>
 const Navbar = () => {
     const {currentUser, signOutUser} = useAuth();
     const {isDarkMode, toggleDarkMode} = useTheme();
-    console.log(isDarkMode)
+    // console.log(isDarkMode)
     return (
-        <header className={`${isDarkMode ? "dark-mode":"light-mode"} sticky top-0 z-10`}>
+        <header className={`sticky top-0 z-10 ${isDarkMode ? "bg-dark-secondary":"bg-light-secondary"}`}>
             <div className="navbar screen">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -97,8 +97,8 @@ const Navbar = () => {
                                     </li>
                                 </ul>
                             </div> : <>
-                                <Link to={"/login"} className="btn bg-pri hover:bg-gold text-seco">Login</Link>
-                                <Link to={"/register"} className="btn bg-pri hover:bg-gold text-seco">Sign up</Link>
+                                <Link to={"/login"} className={`btnFilled no-hover-color ${isDarkMode ? "bg-dark-primary":"bg-light-primary text-light-secondary"}`}>Login</Link>
+                                <Link to={"/register"} className={`btnOutline no-hover-color ${isDarkMode ? "border-dark-primary":"border-light-primary text-light-primary"}`}>Sign up</Link>
                             </>
                     }
                 </div>

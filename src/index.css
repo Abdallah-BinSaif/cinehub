@@ -9,10 +9,12 @@
 .dark-mode{
     background-color: #010104;
     color: #eae9fc;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 .light-mode{
     background-color: #fbfbfe;
     color: #050315;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 .screen{
@@ -35,8 +37,8 @@ input{
     font-size: 1.25rem;
     line-height: 1.75rem;
     border-width: 1px;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+    border-radius: .25rem;
+    padding: 0.5rem 1rem;
 }
 
 .btnFilled{
@@ -44,8 +46,8 @@ input{
     font-size: 1.25rem;
     line-height: 1.75rem;
     border: none;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+    border-radius: .25rem;
+    padding: 0.5rem 1rem;
 }
 
 /* background Images */

@@ -1,37 +1,39 @@
-import React from 'react';
+import { motion } from "motion/react"
 import {FaStar} from "react-icons/fa";
 import {useLocation, useNavigate} from "react-router-dom";
+import useTheme from "../hooks/useTheme.jsx";
 
 const MovieCard = ({movie, handleFavDelete}) => {
+    const {isDarkMode} = useTheme();
     const navigate = useNavigate()
     const location = useLocation();
 
     const {duration, genre, poster, rating, summary, title, year, _id} = movie
     return (
-        <div className="card shadow-xl border border-gray-200 hover:shadow-2xl transition-shadow">
+        <div className={`rounded shadow-xl duration-300 transition border ${isDarkMode ? "border-dark-primary hover:shadow-dark-primary":"border-light-secondary hover:shadow-light-secondary"}  hover:shadow-2xl`}>
             <figure className="px-4 pt-4">
-                <img src={poster} alt={title} className="rounded-xl w-full h-56 object-cover" />
+                <motion.img whileHover={{scale:1.02}} src={poster} alt={title} className="rounded-xl w-full h-56 object-cover" />
             </figure>
-            <div className="card-body">
-                <h2 className="card-title text-lg font-bold">
-                    {title}
-                    <div className="badge badge-secondary bg-gold border-none text-seco ml-2">{year}</div>
+            <div className="card-body space-y-2">
+                <h2 title={title} className="card-title text-lg font-bold">
+                    {title.slice(0,14)}...
+                    <div className="badge bg-secondary text-light-secondary border-none text-seco ml-2">{year}</div>
                 </h2>
-                <p className="text-sm text-gray-600">{summary}</p>
-                <div className="flex items-center mt-2">
+                <p title={summary} className="text-sm text-gray-600">{summary.slice(24)}...</p>
+                <div className="flex items-center">
                     <FaStar className="text-gold mr-1" />
                     <span className="text-sm text-gold font-semibold">{rating}/10</span>
                 </div>
-                <div className="mt-2">
+                <div className="">
                     <span className="badge badge-outline border-pri text-gold mr-1">{duration} min</span>
 
-                        <span className="badge badge-outline border-pri text-gold mr-1">{genre}</span>
+                    <span className="badge badge-outline border-pri text-gold mr-1">{genre}</span>
                 </div>
-                <div className="card-actions justify-end mt-4">
+                <div className="">
                     {
                         location.pathname === "/favorites"
-                            ? <button onClick={()=>handleFavDelete(_id)} className="btn-sm btn bg-pri text-seco hover:bg-gold">Delete Favorite</button>
-                            : <button onClick={()=> navigate(`/details/${_id}`)} className="btn-sm btn bg-pri text-seco hover:bg-gold">See Details</button>
+                            ? <motion.button whileTap={{y: -1.5}} whileHover={{scale:1.05}} onClick={()=>handleFavDelete(_id)} className={`py-1 px-2 text-sm rounded ${isDarkMode ? "bg-dark-primary":"bg-light-primary text-light-secondary"}`}>Delete Favorite</motion.button>
+                            : <motion.button whileTap={{y: -1.5}} whileHover={{scale:1.05}} onClick={()=> navigate(`/details/${_id}`)} className={`py-1 px-2 text-sm rounded ${isDarkMode ? "bg-dark-primary":"bg-light-primary text-light-secondary"}`}>See Details</motion.button>
                     }
 
                 </div>
