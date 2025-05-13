@@ -15,7 +15,7 @@ const AllMovies = () => {
     //     console.log(e.target.value)
     // }
     return (
-        <div>
+        <section className={"screen"}>
 
             <div className={"text-center text-5xl"}>
                 <h2>Explore Your Movie</h2>
@@ -27,12 +27,12 @@ const AllMovies = () => {
                     <input placeholder={"Popcorn ready? Let's Find a movie"} onChange={(e)=>setSearch(e.target.value)} type="text" className="w-full text-gold"/>
                 </label>
             </div>
-            <div className={"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-8 gap-3"}>
+            <div className={"grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"}>
                 {
                     movies?.map(item => <MovieCard key={item._id} movie={item}></MovieCard>)
                 }
             </div>
-        </div>
+        </section>
     );
 };
 
