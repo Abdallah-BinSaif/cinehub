@@ -6,15 +6,6 @@
     color: inherit !important;
 }
 
-.screen{
-    max-width: 1280px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-span svg{
-    display: inline;
-}
 .dark-mode{
     background-color: #010104;
     color: #eae9fc;
@@ -24,6 +15,21 @@ span svg{
     color: #050315;
 }
 
+.screen{
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+span svg{
+    display: inline;
+}
+
+
+input{
+    padding: 0.5rem;
+    color:black;
+}
 .btnOutline{
     font-weight: 600;
     font-size: 1.25rem;
@@ -32,6 +38,7 @@ span svg{
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
 }
+
 .btnFilled{
     font-weight: 600;
     font-size: 1.25rem;
@@ -45,5 +52,6 @@ span svg{
 .loginBG{
     color: white;
     height: calc(100vh);
+    object-fit: cover;
     background-image: url("./assets/loginbg.jpg");
 }

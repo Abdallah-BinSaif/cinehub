@@ -51,7 +51,7 @@ const Login = () => {
                                 required: "Email is required"
                             }) }
                                    placeholder="email"
-                                   className="text-black py-2 px-2"
+                                   className=""
                                    required/>
                             <p>{errors?.email?.message}</p>
                         </div>
@@ -73,7 +73,7 @@ const Login = () => {
                             </label>
                         </div>
                         <div className="form-control mt-6">
-                            <button className="py-3 bg-light-primary btnFilled border-none text-white">Login</button>
+                            <button className="bg-light-primary btnFilled text-white">Login</button>
                         </div>
                         <label className="label">
                             <Link
