@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.no-hover-color:hover {
+    color: inherit !important;
+}
+
 .screen{
     max-width: 1280px;
     margin-left: auto;
@@ -18,4 +22,28 @@ span svg{
 .light-mode{
     background-color: #fbfbfe;
     color: #050315;
+}
+
+.btnOutline{
+    font-weight: 600;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    border-width: 1px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+.btnFilled{
+    font-weight: 600;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    border: none;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+/* background Images */
+.loginBG{
+    color: white;
+    height: calc(100vh);
+    background-image: url("./assets/loginbg.jpg");
 }
