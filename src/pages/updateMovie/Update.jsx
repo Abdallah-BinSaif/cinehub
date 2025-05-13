@@ -2,16 +2,26 @@ import React, {useContext, useState} from 'react';
 import { useForm } from "react-hook-form";
 import { Rating } from 'react-simple-star-rating'
 import Swal from "sweetalert2";
-import {authContext} from "../components/AuthProvider.jsx";
+import {authContext} from "../../provider/AuthProvider.jsx";
+import {useLoaderData} from "react-router-dom";
 
-const AddMovie = () => {
+const Update = () => {
+    const Mdata = useLoaderData();
+
     const {currentUser} = useContext(authContext)
     const [rating, setRating] = useState(0)
     const {
         register,
         handleSubmit,
         formState:{errors},
-        watch} = useForm()
+        watch} = useForm({defaultValues:{
+            duration: Mdata.duration,
+            genre: Mdata.genre,
+            poster: Mdata.poster,
+            summary: Mdata.summary,
+            title: Mdata.title,
+            year: Mdata.year
+        }})
 
     const genre = ["Adventure", "Action", "Horror", "Drama", "Romance", "Mystery", "Thriller", "Action", "Sci-Fi","Historical", "Family","Fantasy"]
     const years = [2024, 2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2013, 2012, 2011, 2010, 2009, 2008, 2007, 2006, 2005, 2004, 2003, 2002, 2001, 2000, 1999, 1998, 1997, 1996, 1995, 1994, 1993, 1992, 1991, 1990, 1989, 1988, 1987, 1986, 1985, 1984, 1983, 1982, 1981, 1980]
@@ -36,34 +46,30 @@ const AddMovie = () => {
                 onSubmit={handleSubmit((formData) => {
                     const addedMovie = {...formData, rating, year, duration, addedBy:currentUser?.email}
                     if(rating){
-                        fetch("https://movie-portal-server-pink-one.vercel.app/cinemas",{
-                            method: "POST",
+                        fetch(`https://movie-portal-server-pink-one.vercel.app/cinemas/${Mdata._id}`,{
+                            method: "PATCH",
                             headers:{
                                 "content-type": "application/json"
                             },
                             body: JSON.stringify(addedMovie)
                         }).then(res => res.json())
                             .then(data => {
-                                const favId = data?.insertedId + currentUser.email;
-                                fetch("https://movie-portal-server-pink-one.vercel.app/favorites",{
-                                    method: "PATCH",
-                                    headers: {
-                                        "content-type": "application/json"
-                                    },
-                                    body: JSON.stringify({favId,
-                                        ...formData,
-                                        duration,
-                                        rating,
-                                        year,
-                                        favoriteEmail: currentUser?.email})
-                                }).then(res => res.json()).then(data => console.log(data))
-                                console.log(data)
-                                if(data.acknowledged){
+                                if(data.modifiedCount){
                                     Swal.fire({
-                                        title: "Added",
-                                        text: "The movie added to the database.",
+                                        title: "Modified",
+                                        text: "Modified The movie to the database.",
                                         icon: "success"
                                     });
+                                }else if(!data.matchedCount){
+                                    Swal.fire({
+                                        title: "Nothing to Found",
+                                        icon: "error"
+                                    })
+                                }else{
+                                    Swal.fire({
+                                        title: "Nothing to Modify",
+                                        icon: "question"
+                                    })
                                 }
                             })
                     }else{
@@ -164,10 +170,10 @@ const AddMovie = () => {
                     <p className={"text-red-500"}>{errors.summary?.message}</p>
                 </div><br/>
 
-                <input className={"btn bg-gold-seco hover:bg-gold w-full"} type={"submit"} value={"Add Movie"}/>
+                <input className={"btn bg-gold-seco hover:bg-gold w-full"} type={"submit"} value={"Update Movie"}/>
             </form>
         </div>
     );
 };
 
-export default AddMovie;
+export default Update;

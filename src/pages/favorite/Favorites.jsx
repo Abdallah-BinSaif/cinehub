@@ -1,7 +1,6 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {useLocation} from "react-router-dom";
-import {authContext} from "../components/AuthProvider.jsx";
-import MovieCard from "../components/MovieCard.jsx";
+import {useContext, useEffect, useState} from 'react';
+import {authContext} from "../../provider/AuthProvider.jsx";
+import MovieCard from "../../components/MovieCard.jsx";
 import Swal from "sweetalert2";
 
 const Favorites = () => {

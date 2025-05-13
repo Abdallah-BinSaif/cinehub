@@ -1,9 +1,7 @@
-import React, {useEffect, useState} from 'react';
-import {useLoaderData} from "react-router-dom";
-import MovieCard from "../components/MovieCard.jsx";
+import {useEffect, useState} from 'react';
+import MovieCard from "../../components/MovieCard.jsx";
 
 const AllMovies = () => {
-    const fetchMovies = useLoaderData();
     const [movies, setMovies] = useState(null)
     const [search, setSearch] = useState({});
     useEffect(() => {
@@ -29,7 +27,7 @@ const AllMovies = () => {
                     <input placeholder={"Popcorn ready? Let's Find a movie"} onChange={(e)=>setSearch(e.target.value)} type="text" className="w-full text-gold"/>
                 </label>
             </div>
-            <div className={"container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-8 gap-3"}>
+            <div className={"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-8 gap-3"}>
                 {
                     movies?.map(item => <MovieCard key={item._id} movie={item}></MovieCard>)
                 }

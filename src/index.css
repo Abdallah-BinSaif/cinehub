@@ -2,7 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+.screen{
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 span svg{
     display: inline;
+}
+.dark-mode{
+    background-color: #010104;
+    color: #eae9fc;
+}
+.light-mode{
+    background-color: #fbfbfe;
+    color: #050315;
 }

@@ -8,14 +8,13 @@ export default {
     extend: {},
     colors: {
       // Configure your color palette here
-      "pri": "#00BFFF",
-      "seco": "#2C3E50",
-      "third": "#e7f9ff",
-      "footer": "#8b8a0b",
-      "gold": "#FFD700",
-      "gold-seco": "#ffe9b8",
-      "back": "#F5F5F5",
-      "red": "rgb(255,87,87)"
+      "dark-primary": "#3c388a",
+      "dark-secondary": "#020024",
+      "dark-accent": "#0600c2",
+
+      "light-primary": "#2f27ce",
+      "light-secondary": "#dedcff",
+      "light-accent": "#4843bd",
     }
   },
   plugins: [

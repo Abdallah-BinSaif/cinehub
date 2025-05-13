@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import {FaClock, FaStar} from "react-icons/fa";
 import {useLoaderData, useNavigate} from "react-router-dom";
-import {authContext} from "../components/AuthProvider.jsx";
+import {authContext} from "../../provider/AuthProvider.jsx";
 import Swal from "sweetalert2";
 
 const MovieDetails = () => {

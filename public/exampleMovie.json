@@ -1,0 +1,48 @@
+{
+  "_id": ObjectId, // MongoDB's default unique identifier
+
+  // Core Identification & Display
+  "title": String,
+  "original_title": String, // Optional: For non-English titles
+  "synopsis": String,
+  "release_date": Date, // Store as a Date object
+  "runtime": Number, // In minutes
+  "genres": [ String ], // Array of genre names (e.g., ["Action", "Sci-Fi", "Comedy"]) - Embedding names is simple.
+  // Alternatively, could be [ ObjectId ] referencing a separate 'genres' collection if genres have their own data.
+  "poster_url": String, // URL to the poster image
+  "backdrop_url": String, // URL to a larger background image
+  "language": String, // Original language code (e.g., "en", "fr")
+
+  // Detailed Information & Relationships (Referencing or Embedded Sub-Documents)
+  "trailer_url": String, // URL to the trailer (e.g., YouTube link)
+  "mpaa_rating": String, // e.g., "PG-13", "R"
+
+  // User Ratings - Embedded sub-document is efficient
+  "user_ratings": {
+    "average": Number, // Calculated average rating (e.g., 7.8)
+    "count": Number    // Number of user ratings (e.g., 1500)
+  },
+
+  // People (Director, Writers, Cast) - Best to reference a separate 'people' collection
+  // Storing arrays of ObjectId references
+  "director_ids": [ ObjectId ], // Array of _id references to documents in the 'people' collection
+  "writer_ids": [ ObjectId ],   // Array of _id references to documents in the 'people' collection
+  "cast": [ // Array of embedded sub-documents for cast, linking person and character
+    {
+      "person_id": ObjectId, // Reference to a document in the 'people' collection
+      "character": String,   // The character name they played
+      "order": Number        // Optional: Order in credits
+    }
+  ],
+
+  // Production Details (Optional but good)
+  "production_companies": [ String ], // Array of company names
+  "country_of_origin": String,
+
+  // Keywords/Tags (Optional)
+  "keywords": [ String ], // Array of keywords for search
+
+  // Timestamps (Optional but useful for management)
+  "created_at": Date,
+  "updated_at": Date
+}

@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {authContext} from "../AuthProvider.jsx";
+import {authContext} from "../provider/AuthProvider.jsx";
 import {Navigate, useLocation} from "react-router-dom";
 import {Vortex} from "react-loader-spinner";
 

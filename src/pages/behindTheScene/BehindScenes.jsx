@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import BehindCard from "../components/behind the scenes/BehindCard.jsx";
+import BehindCard from "../../components/BehindCard.jsx";
 
 const BehindScenes = () => {
     const [explosive, setExplosive] = useState([]);

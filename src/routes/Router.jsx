@@ -1,16 +1,16 @@
 import {createBrowserRouter} from "react-router-dom";
-import Home from "../pages/Home.jsx";
-import MainLayout from "../pages/MainLayout.jsx";
-import AllMovies from "../pages/AllMovies.jsx";
-import AddMovie from "../pages/AddMovie.jsx";
-import MovieDetails from "../pages/MovieDetails.jsx";
+import Home from "../pages/home/Home.jsx";
+import MainLayout from "../layouts/MainLayout.jsx";
+import AllMovies from "../pages/allMovies/AllMovies.jsx";
+import AddMovie from "../pages/addMovie/AddMovie.jsx";
+import MovieDetails from "../pages/detailsMovie/MovieDetails.jsx";
 import NotFound from "../pages/NotFound.jsx";
-import Login from "../components/authentication/Login.jsx";
-import Registration from "../components/authentication/Registration.jsx";
-import Private from "../components/authentication/Private.jsx";
-import Favorites from "../pages/Favorites.jsx";
-import Update from "../pages/Update.jsx";
-import BehindScenes from "../pages/BehindScenes.jsx";
+import Login from "../auth/Login.jsx";
+import Registration from "../auth/Registration.jsx";
+import Private from "../auth/Private.jsx";
+import Favorites from "../pages/favorite/Favorites.jsx";
+import Update from "../pages/updateMovie/Update.jsx";
+import BehindScenes from "../pages/behindTheScene/BehindScenes.jsx";
 
 
 export const router = createBrowserRouter([
@@ -40,16 +40,17 @@ export const router = createBrowserRouter([
                 loader: ({params})=>fetch(`https://movie-portal-server-pink-one.vercel.app/cinemas/${params.id}`),
                 element: <Private><MovieDetails/></Private>
             },{
-                path: "/login",
-                element: <Login></Login>
-            },{
-                path: "/register",
-                element: <Registration></Registration>
-            },{
                 path: "/update/:id",
                 loader: ({params})=>fetch(`https://movie-portal-server-pink-one.vercel.app/cinemas/${params.id}`),
                 element: <Private><Update></Update></Private>
             },
         ]
     },
+    {
+        path: "/login",
+        element: <Login></Login>
+    },{
+        path: "/register",
+        element: <Registration></Registration>
+    }
 ]);

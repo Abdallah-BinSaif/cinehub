@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import {Link, useNavigate} from "react-router-dom";
 import {FcGoogle} from "react-icons/fc";
 import {useForm} from "react-hook-form";
-import {authContext} from "../AuthProvider.jsx";
+import {authContext} from "../provider/AuthProvider.jsx";
 import Swal from "sweetalert2";
 
 const Registration = () => {
