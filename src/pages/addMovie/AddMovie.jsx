@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { Rating } from 'react-simple-star-rating'
 import Swal from "sweetalert2";
 import {authContext} from "../../provider/AuthProvider.jsx";
+import secureAxios from "../../axios/SecureAxios.jsx";
 
 const AddMovie = () => {
     const {currentUser} = useContext(authContext)
@@ -35,35 +36,22 @@ const AddMovie = () => {
                 onSubmit={handleSubmit((formData) => {
                     const addedMovie = {...formData, rating, year, duration, addedBy:currentUser?.email}
                     if(rating){
-                        fetch("https://movie-portal-server-pink-one.vercel.app/cinemas",{
-                            method: "POST",
-                            headers:{
-                                "content-type": "application/json"
-                            },
-                            body: JSON.stringify(addedMovie)
-                        }).then(res => res.json())
+                        secureAxios.post("/cinemas",addedMovie)
                             .then(data => {
-                                const favId = data?.insertedId + currentUser.email;
-                                fetch("https://movie-portal-server-pink-one.vercel.app/favorites",{
-                                    method: "PATCH",
-                                    headers: {
-                                        "content-type": "application/json"
-                                    },
-                                    body: JSON.stringify({favId,
-                                        ...formData,
-                                        duration,
-                                        rating,
-                                        year,
-                                        favoriteEmail: currentUser?.email})
-                                }).then(res => res.json()).then(data => console.log(data))
-                                console.log(data)
-                                if(data.acknowledged){
+                                if(data.data.acknowledged){
                                     Swal.fire({
                                         title: "Added",
                                         text: "The movie added to the database.",
                                         icon: "success"
                                     });
                                 }
+                            })
+                            .catch(err=> {
+                                Swal.fire({
+                                    title: "ERROR",
+                                    text: `${err.code}`,
+                                    icon: "error"
+                                })
                             })
                     }else{
                         Swal.fire({

@@ -9,6 +9,11 @@ const lists = <>
     <li><NavLink className={({isActive})=> isActive ? "text-light-accent":"" } to={"/behind"}>Behind the Scenes</NavLink></li>
 
 </>
+const profileList = <>
+    <li><NavLink to={"/profile"}>Profile</NavLink></li>
+    <li><NavLink to={"/dashboard"}>Dashboard</NavLink></li>
+
+</>
 
 const Navbar = () => {
     const {currentUser, signOutUser} = useAuth();
@@ -83,21 +88,16 @@ const Navbar = () => {
                                 </div>
                                 <ul
                                     tabIndex={0}
-                                    className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                                    <li>
-                                        <a className="justify-between">
-                                            Profile
-                                            <span className="badge">New</span>
-                                        </a>
-                                    </li>
-                                    <li><a>Settings</a></li>
+                                    className="menu menu-sm dropdown-content text-light-text bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                                    {profileList}
                                     <li>
                                         <button onClick={signOutUser}><Link
                                             to={"/login"}>Sign Out</Link></button>
                                     </li>
                                 </ul>
                             </div> : <>
-                                <Link to={"/login"} className={`btnFilled no-hover-color ${isDarkMode ? "bg-dark-primary":"bg-light-primary text-light-secondary"}`}>Login</Link>
+                                <Link to={"/login"}
+                                      className={`btnFilled no-hover-color ${isDarkMode ? "bg-dark-primary" : "bg-light-primary text-light-secondary"}`}>Login</Link>
                                 <Link to={"/register"} className={`btnOutline no-hover-color ${isDarkMode ? "border-dark-primary":"border-light-primary text-light-primary"}`}>Sign up</Link>
                             </>
                     }

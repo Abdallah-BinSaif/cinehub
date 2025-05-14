@@ -7,6 +7,10 @@ const MovieCard = ({movie, handleFavDelete}) => {
     const {isDarkMode} = useTheme();
     const navigate = useNavigate()
     const location = useLocation();
+    const goToDetail = location?.pathname?.split("/")[1] === "dashboard" ? "/dashboard/details":"/details"
+
+    const btnFab = location?.pathname === "/dashboard/favorites" || "/favorites"
+    console.log(btnFab)
 
     const {duration, genre, poster, rating, summary, title, year, _id} = movie
     return (
@@ -31,9 +35,9 @@ const MovieCard = ({movie, handleFavDelete}) => {
                 </div>
                 <div className="">
                     {
-                        location.pathname === "/favorites"
+                        location?.pathname === "/dashboard/favorites"
                             ? <motion.button whileTap={{y: -1.5}} whileHover={{scale:1.05}} onClick={()=>handleFavDelete(_id)} className={`py-1 px-2 text-sm rounded ${isDarkMode ? "bg-dark-primary":"bg-light-primary text-light-secondary"}`}>Delete Favorite</motion.button>
-                            : <motion.button whileTap={{y: -1.5}} whileHover={{scale:1.05}} onClick={()=> navigate(`/details/${_id}`)} className={`py-1 px-2 text-sm rounded ${isDarkMode ? "bg-dark-primary":"bg-light-primary text-light-secondary"}`}>See Details</motion.button>
+                            : <motion.button whileTap={{y: -1.5}} whileHover={{scale:1.05}} onClick={()=> navigate(`${goToDetail}/${_id}`)} className={`py-1 px-2 text-sm rounded ${isDarkMode ? "bg-dark-primary":"bg-light-primary text-light-secondary"}`}>See Details</motion.button>
                     }
 
                 </div>

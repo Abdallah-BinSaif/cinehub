@@ -1,19 +1,25 @@
 import {useEffect, useState} from 'react';
 import MovieCard from "../../components/MovieCard.jsx";
+import axiosSecure from "../../axios/SecureAxios.jsx";
+import Swal from "sweetalert2";
 
 const AllMovies = () => {
     const [movies, setMovies] = useState(null)
     const [search, setSearch] = useState({});
     useEffect(() => {
 
-        fetch(`https://movie-portal-server-pink-one.vercel.app/cinemas?searchParams=${search}`)
-            .then(res=>res.json())
-            .then(data => setMovies(data))
+        axiosSecure.get(`/cinemas?searchParams=${search}`)
+            .then(res => setMovies(res.data))
+            .catch(err =>{
+                Swal.fire({
+                    title: "Error",
+                    text: `${err.code}`,
+                    icon: "error"
+                })
+            })
+
     }, [search]);
 
-    // const handleSearch = (e) => {
-    //     console.log(e.target.value)
-    // }
     return (
         <section className={"screen py-12"}>
 

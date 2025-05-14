@@ -6,6 +6,7 @@ import {authContext} from "../../provider/AuthProvider.jsx";
 import {useLoaderData} from "react-router-dom";
 import useTheme from "../../hooks/useTheme.jsx";
 import { motion } from "motion/react"
+import axiosSecure from "../../axios/SecureAxios.jsx";
 
 const Update = () => {
     const Mdata = useLoaderData();
@@ -49,21 +50,15 @@ const Update = () => {
                 onSubmit={handleSubmit((formData) => {
                     const addedMovie = {...formData, rating, year, duration, addedBy:currentUser?.email}
                     if(rating){
-                        fetch(`https://movie-portal-server-pink-one.vercel.app/cinemas/${Mdata._id}`,{
-                            method: "PATCH",
-                            headers:{
-                                "content-type": "application/json"
-                            },
-                            body: JSON.stringify(addedMovie)
-                        }).then(res => res.json())
-                            .then(data => {
-                                if(data.modifiedCount){
+                        axiosSecure.patch(`/cinemas/${Mdata._id}`, addedMovie)
+                            .then(res => {
+                                if(res.data.modifiedCount){
                                     Swal.fire({
                                         title: "Modified",
                                         text: "Modified The movie to the database.",
                                         icon: "success"
                                     });
-                                }else if(!data.matchedCount){
+                                }else if(!res.data.matchedCount){
                                     Swal.fire({
                                         title: "Nothing to Found",
                                         icon: "error"
@@ -75,6 +70,32 @@ const Update = () => {
                                     })
                                 }
                             })
+                        // fetch(`https://movie-portal-server-pink-one.vercel.app/cinemas/${Mdata._id}`,{
+                        //     method: "PATCH",
+                        //     headers:{
+                        //         "content-type": "application/json"
+                        //     },
+                        //     body: JSON.stringify(addedMovie)
+                        // }).then(res => res.json())
+                        //     .then(data => {
+                        //         if(data.modifiedCount){
+                        //             Swal.fire({
+                        //                 title: "Modified",
+                        //                 text: "Modified The movie to the database.",
+                        //                 icon: "success"
+                        //             });
+                        //         }else if(!data.matchedCount){
+                        //             Swal.fire({
+                        //                 title: "Nothing to Found",
+                        //                 icon: "error"
+                        //             })
+                        //         }else{
+                        //             Swal.fire({
+                        //                 title: "Nothing to Modify",
+                        //                 icon: "question"
+                        //             })
+                        //         }
+                        //     })
                     }else{
                         Swal.fire({
                             title: "Rating",

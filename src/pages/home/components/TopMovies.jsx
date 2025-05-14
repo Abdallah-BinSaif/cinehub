@@ -1,19 +1,12 @@
 import { motion } from "motion/react"
 import MovieCard from "../../../components/MovieCard.jsx";
-import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
+import useCinema from "../../../hooks/useCinema.jsx";
 
 const TopMovies = () => {
     const navigate = useNavigate()
-    const [movies, setMovies] = useState();
-    useEffect(() => {
-        fetch("https://movie-portal-server-pink-one.vercel.app/cinemas")
-            .then(res => res.json())
-            .then(data => {
-                const sorted = data.sort((a , b)=> b.rating - a.rating)
-                setMovies(sorted.slice(0, 6))
-            })
-    }, []);
+    const {cinemas:movies} = useCinema()
+
     return (
         <section className={"screen"}>
             <div className={"text-center"}>

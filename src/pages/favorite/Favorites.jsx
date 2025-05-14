@@ -1,33 +1,38 @@
-import {useContext, useEffect, useState} from 'react';
-import {authContext} from "../../provider/AuthProvider.jsx";
 import MovieCard from "../../components/MovieCard.jsx";
 import Swal from "sweetalert2";
+import useFav from "../../hooks/useFav.jsx";
+import axiosSecure from "../../axios/SecureAxios.jsx";
 
 const Favorites = () => {
-    const {currentUser} = useContext(authContext)
-    const [favorites, setFavorites] = useState();
-    useEffect(() => {
-        fetch(`https://movie-portal-server-pink-one.vercel.app/favorites?email=${currentUser.email}`)
-            .then(res => res.json())
-            .then(data => {
-                setFavorites(data)
-            })
-    }, []);
+
+    const {favorites, refetch} = useFav()
+
+    console.log(favorites)
     const handleFavDelete = (id) => {
-        fetch(`https://movie-portal-server-pink-one.vercel.app/favorites/${id}`,{
-            method: "DELETE"
-        })
-            .then(res => res.json())
-            .then(data => {
-                if(data.deletedCount){
-                    const remaining = favorites.filter(item => item._id !== id)
-                    setFavorites(remaining)
+        axiosSecure.delete(`/favorites/${id}`)
+            .then(res => {
+                if(res.data.deletedCount){
+                    refetch
                     Swal.fire("Deleted from Your Favorite List")
                 }
                 else{
                     Swal.fire("Can't delete this item")
                 }
             })
+        // fetch(`https://movie-portal-server-pink-one.vercel.app/favorites/${id}`,{
+        //     method: "DELETE"
+        // })
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         if(data.deletedCount){
+        //             const remaining = favorites.filter(item => item._id !== id)
+        //             setFavorites(remaining)
+        //             Swal.fire("Deleted from Your Favorite List")
+        //         }
+        //         else{
+        //             Swal.fire("Can't delete this item")
+        //         }
+        //     })
     }
     return (
         <div>

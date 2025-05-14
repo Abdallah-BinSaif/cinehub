@@ -1,32 +1,33 @@
 import useTheme from "../../../hooks/useTheme.jsx";
 
 
+
 const Banner = () => {
-    const {isDarkMode} = useTheme()
+    // const {isDarkMode} = useTheme()
     const slides = [
         {
             id: 1,
             title: "Discover Blockbusters",
             description: "Explore the latest and greatest movies from all genres.",
-            image: "https://i.ibb.co/k1wwVDc/Discover-Blockbusters.jpg",
+            image: "https://i.ibb.co/Xrb1ZwBR/slide3.jpg",
         },
         {
             id: 2,
             title: "Top Picks for You",
             description: "Tailored recommendations based on your interests.",
-            image: "https://i.ibb.co/kcxYXPx/Top-Picks-for-You.jpg",
+            image: "https://i.ibb.co/MxKVSpNg/slide1.jpg",
         },
         {
             id: 3,
             title: "Upcoming Releases",
             description: "Stay ahead of the curve with upcoming movie releases.",
-            image: "https://i.ibb.co/KGnyczW/Upcoming-Releases.jpg",
+            image: "https://i.ibb.co/XxGs0bQT/slide2.jpg",
         },
     ];
 
     return (
         <section className={"screen"}>
-            <div className="carousel rounded w-full">
+            <div className="carousel h-[800px] rounded w-full">
                 {slides.map((slide, index) => (
                     <div
                         key={slide.id}

@@ -11,6 +11,7 @@ import Private from "../auth/Private.jsx";
 import Favorites from "../pages/favorite/Favorites.jsx";
 import Update from "../pages/updateMovie/Update.jsx";
 import BehindScenes from "../pages/behindTheScene/BehindScenes.jsx";
+import Dashboard from "../layouts/Dashboard.jsx";
 
 
 export const router = createBrowserRouter([
@@ -27,24 +28,35 @@ export const router = createBrowserRouter([
                 element: <AllMovies/>,
                 loader: ()=> fetch("https://movie-portal-server-pink-one.vercel.app/cinemas")
             },{
-                path: "/add",
-                element: <Private><AddMovie/></Private>
-            },{
-                path: "/favorites",
-                element: <Private><Favorites/></Private>
-            },{
                 path: "/behind",
                 element: <BehindScenes/>
             },{
                 path: "/details/:id",
                 loader: ({params})=>fetch(`https://movie-portal-server-pink-one.vercel.app/cinemas/${params.id}`),
-                element: <Private><MovieDetails/></Private>
-            },{
-                path: "/update/:id",
-                loader: ({params})=>fetch(`https://movie-portal-server-pink-one.vercel.app/cinemas/${params.id}`),
-                element: <Private><Update></Update></Private>
+                element: <MovieDetails/>
             },
         ]
+    },
+    {
+        path: "/dashboard",
+        element: <Dashboard/>,
+        errorElement: <NotFound/>,
+        children:[
+            {
+                path: "update/:id",
+                loader: ({params})=>fetch(`https://movie-portal-server-pink-one.vercel.app/cinemas/${params.id}`),
+                element: <Private><Update></Update></Private>
+            },{
+                path: "add",
+                element: <Private><AddMovie/></Private>
+            },{
+                path: "favorites",
+                element: <Private><Favorites/></Private>
+            },{
+                path: "details/:id",
+                element: <Private><MovieDetails/></Private>
+            }
+        ],
     },
     {
         path: "/login",

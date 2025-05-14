@@ -7,15 +7,20 @@ import AuthProvider from "./provider/AuthProvider.jsx";
 import ThemeProvider from "./provider/ThemeProvider.jsx";
 import '@mantine/core/styles.css';
 import {MantineProvider} from "@mantine/core";
+import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
+
+const queryClient = new QueryClient()
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
       <ThemeProvider>
-          <MantineProvider>
-              <AuthProvider>
-                  <RouterProvider router={router} />
-              </AuthProvider>
-          </MantineProvider>
+          <QueryClientProvider client={queryClient}>
+              <MantineProvider>
+                  <AuthProvider>
+                      <RouterProvider router={router} />
+                  </AuthProvider>
+              </MantineProvider>
+          </QueryClientProvider>
       </ThemeProvider>
   </StrictMode>,
 )

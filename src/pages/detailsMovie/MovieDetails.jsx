@@ -1,58 +1,95 @@
 import {FaClock, FaStar} from "react-icons/fa";
-import {useLoaderData, useNavigate} from "react-router-dom";
+import {useLoaderData, useNavigate, useParams} from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth.jsx";
 import useTheme from "../../hooks/useTheme.jsx";
 import { motion } from "motion/react"
+import {useEffect, useState} from "react";
+import axios from "axios";
+import conf from "../../conf/conf.js";
+import axiosSecure from "../../axios/SecureAxios.jsx";
 
 const MovieDetails = () => {
     const navigate = useNavigate();
+    const [movieData, setMovieData] = useState({});
+    const {id}= useParams()
+    console.log(id,conf.vercelURL)
     const movie = useLoaderData();
+    console.log(movie)
     const {currentUser} = useAuth();
     const {isDarkMode} = useTheme();
 
+    useEffect(() => {
+        axiosSecure.get(`/cinemas/${id}`)
+            .then(res=> setMovieData(res))
+            .catch(err=>console.log(err))
+    }, [id]);
+    console.log(movieData)
 
-    const {duration, genre, poster, rating, summary, title, year, _id} = movie
+    const {duration, genre, poster, rating, summary, title, year, _id} = movie || {}
 
     const handleDelete = (id) => {
-        fetch(`https://movie-portal-server-pink-one.vercel.app/cinemas/${id}`,{
-            method: 'DELETE',
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                navigate("/all")
-                Swal.fire("Deleted From Cinema List")
+        axiosSecure.delete(`cinemas/${id}`)
+            .then(res => {
+                // todo: add a swal based on deleted count
+                console.log(res)
             })
+        // fetch(`https://movie-portal-server-pink-one.vercel.app/cinemas/${id}`,{
+        //     method: 'DELETE',
+        // })
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         console.log(data)
+        //         navigate("/all")
+        //         Swal.fire("Deleted From Cinema List")
+        //     })
     }
-    const handleFavorite = () => {
-        const favId = _id+currentUser.email;
-        console.log(favId)
-        fetch(`https://movie-portal-server-pink-one.vercel.app/favorites`,{
-            method: "PATCH",
-            headers: {
-                "content-type": "application/json"
-            },
-            body: JSON.stringify({
-                favId,
-                duration,
-                genre,
-                poster,
-                rating,
-                summary,
-                title,
-                year,
-                favoriteEmail: currentUser.email
-            })
-        })
-            .then(res => res.json())
-            .then(data => {
-                if(data.upsertedCount){
+    const handleFavorite = (id) => {
+        const movieId = id;
+        console.log(id)
+        // TODO: it don't work properly
+        axiosSecure.patch("/favorites", {movieId,
+            duration,
+            genre,
+            poster,
+            rating,
+            summary,
+            title,
+            year,
+            favoriteEmail: currentUser.email})
+            .then(res => {
+                if(res.data.upsertedCount){
                     Swal.fire(`${title} added to Favorite list`)
-                }else if(data.matchedCount){
-                    Swal.fire(`${title} already exist in Favorite list`)
+                }else if(res.data.matchedCount){
+                    Swal.fire({title:`${title} already exist in Favorite list`
+                })
                 }
             })
+        // fetch(`https://movie-portal-server-pink-one.vercel.app/favorites`,{
+        //     method: "PATCH",
+        //     headers: {
+        //         "content-type": "application/json"
+        //     },
+        //     body: JSON.stringify({
+        //         movieId,
+        //         duration,
+        //         genre,
+        //         poster,
+        //         rating,
+        //         summary,
+        //         title,
+        //         year,
+        //         favoriteEmail: currentUser.email
+        //     })
+        // })
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         if(data.upsertedCount){
+        //             Swal.fire(`${title} added to Favorite list`)
+        //         }else if(data.matchedCount){
+        //             Swal.fire(`${title} already exist in Favorite list`)
+        //         }
+        //     })
     }
 
     return (
@@ -103,7 +140,7 @@ const MovieDetails = () => {
                                 <motion.button
                                     whileHover={{y:-2}}
                                     whileTap={{y:2}}
-                                    onClick={handleFavorite}
+                                    onClick={()=>handleFavorite(_id)}
                                     className={`border-none rounded ${isDarkMode ? "bg-dark-primary text-light-secondary":"bg-light-primary text-light-secondary"} flex-1`}
                                 >
                                     Add to Favorite
