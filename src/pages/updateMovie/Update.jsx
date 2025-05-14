@@ -1,15 +1,19 @@
-import React, {useContext, useState} from 'react';
+import {useContext, useState} from 'react';
 import { useForm } from "react-hook-form";
 import { Rating } from 'react-simple-star-rating'
 import Swal from "sweetalert2";
 import {authContext} from "../../provider/AuthProvider.jsx";
 import {useLoaderData} from "react-router-dom";
+import useTheme from "../../hooks/useTheme.jsx";
+import { motion } from "motion/react"
 
 const Update = () => {
     const Mdata = useLoaderData();
+    console.log(Mdata)
+    const {isDarkMode} = useTheme()
 
     const {currentUser} = useContext(authContext)
-    const [rating, setRating] = useState(0)
+    const [rating, setRating] = useState(Mdata.rating)
     const {
         register,
         handleSubmit,
@@ -30,7 +34,6 @@ const Update = () => {
     const handleRating = (rate) => {
 
         setRating(rate)
-        // other logic
     }
 
     const year = parseInt(watch("year"))
@@ -40,7 +43,7 @@ const Update = () => {
     return (
         <div className={"container mx-auto my-8"}>
             <div className={"text-center"}>
-                <h2 className={"text-5xl my-8"}>Add a movie</h2>
+                <h2 className={"text-5xl my-8"}>Update movie</h2>
             </div>
             <form
                 onSubmit={handleSubmit((formData) => {
@@ -92,7 +95,7 @@ const Update = () => {
                             })}
                             type={"url"}
                             placeholder={"poster Url"}
-                            className={"w-full input bg-seco"}
+                            className={"w-full"}
                         /><br/>
                         <p className={"text-red-500"}>{errors.poster?.message}</p>
                     </div>
@@ -107,7 +110,7 @@ const Update = () => {
                             })}
                             type={"text"}
                             placeholder={"Poster Title"}
-                            className={"w-full input bg-seco"}
+                            className={"w-full"}
                         /><br/>
                         <p className={"text-red-500"}>{errors.title?.message}</p>
                     </div>
@@ -116,7 +119,7 @@ const Update = () => {
 
                 {/*Input row*/}
                 <div className={"flex flex-col md:flex-row gap-4"}>
-                    <select className={"md:w-1/3 rounded-lg bg-seco"} {...register("genre")}>
+                    <select className={"md:w-1/3 px-2 text-light-text py-2"} {...register("genre")}>
                         <option disabled={true} value={""}>Select Genre</option>
                         {
                             genre.map((item, idx) => <option key={idx} value={`${item}`}>{item}</option>)
@@ -133,11 +136,11 @@ const Update = () => {
                             })}
                             type={"number"}
                             placeholder={"Duration (minute)"}
-                            className={"w-full input bg-seco"}
+                            className={"w-full"}
                         /><br/>
                         <p className={"text-red-500"}>{errors.duration?.message}</p>
                     </div>
-                    <select className={"md:w-1/3 rounded-lg bg-seco"} {...register("year")}>
+                    <select className={"md:w-1/3 p-2 text-light-text"} {...register("year")}>
                         <option disabled={true} value="">Select a Year</option>
                         {
                             years.map((year, idx) => <option key={idx} value={year} >{year}</option>)
@@ -149,6 +152,7 @@ const Update = () => {
                 <div className={"flex flex-col justify-center items-center"}>
                     <label>Rate this Movie</label>
                     <Rating
+                        initialValue={rating}
                         iconsCount={10}
                         onClick={handleRating}
                     ></Rating>
@@ -165,12 +169,17 @@ const Update = () => {
                         })}
                         rows={5}
                         placeholder={"write the summary of the movie"}
-                        className={"w-full rounded-lg bg-seco"}
+                        className={"w-full "}
                     /><br/>
                     <p className={"text-red-500"}>{errors.summary?.message}</p>
                 </div><br/>
 
-                <input className={"btn bg-gold-seco hover:bg-gold w-full"} type={"submit"} value={"Update Movie"}/>
+                <motion.input
+                    whileHover={{y:-2}}
+                    whileTap={{y:2}}
+                    className={`border font-bold rounded w-full ${isDarkMode ? " text-light-secondary":"text-light-primary"} flex-1`}
+                    type={"submit"}
+                    value={"Update Movie"}/>
             </form>
         </div>
     );

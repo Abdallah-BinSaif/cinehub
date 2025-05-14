@@ -2,7 +2,7 @@ import logo from "../../../assets/logo.webp";
 
 const MetaScore = () => {
     return (
-        <div className={"flex flex-col md:flex-row items-center gap-16 justify-between container mx-auto my-32"}>
+        <div className={"flex flex-col md:flex-row items-center gap-16 justify-between screen mx-auto my-32"}>
             <div className={"flex flex-col items-start gap-4 justify-center"}>
                 <div className={"flex items-center justify-center text-4xl text-gold font-bold gap-4"}>
                     <img className={"w-16 h-16"} src={logo}/>

@@ -1,13 +1,15 @@
-import React, {useContext} from 'react';
 import {FaClock, FaStar} from "react-icons/fa";
 import {useLoaderData, useNavigate} from "react-router-dom";
-import {authContext} from "../../provider/AuthProvider.jsx";
 import Swal from "sweetalert2";
+import useAuth from "../../hooks/useAuth.jsx";
+import useTheme from "../../hooks/useTheme.jsx";
+import { motion } from "motion/react"
 
 const MovieDetails = () => {
     const navigate = useNavigate();
     const movie = useLoaderData();
-    const {currentUser} = useContext(authContext)
+    const {currentUser} = useAuth();
+    const {isDarkMode} = useTheme();
 
 
     const {duration, genre, poster, rating, summary, title, year, _id} = movie
@@ -88,41 +90,37 @@ const MovieDetails = () => {
                                 <h2 className="text-lg font-semibold text-third">Summary:</h2>
                                 <p className="text-gray-700 mt-2">{summary}</p>
                             </div>
-                            {/*<div className="mt-6">*/}
-                            {/*    <button onClick={() => navigate("/all")} className="btn bg-pri text-seco hover:bg-gold">See*/}
-                            {/*        all movies*/}
-                            {/*    </button>*/}
-                            {/*</div>*/}
+
                             <div className="mt-6 flex gap-4">
-                                <button
+                                <motion.button
+                                    whileHover={{y:-2}}
+                                    whileTap={{y:2}}
                                     onClick={() => handleDelete(_id)}
-                                    className="btn btn-error flex-1"
+                                    className="btnOutline text-error flex-1"
                                 >
                                     Delete Movie
-                                </button>
-                                <button
+                                </motion.button>
+                                <motion.button
+                                    whileHover={{y:-2}}
+                                    whileTap={{y:2}}
                                     onClick={handleFavorite}
-                                    className="btn bg-pri text-seco hover:text-third hover:bg-seco flex-1"
+                                    className={`border-none rounded ${isDarkMode ? "bg-dark-primary text-light-secondary":"bg-light-primary text-light-secondary"} flex-1`}
                                 >
                                     Add to Favorite
-                                </button>
-                                <button
+                                </motion.button>
+                                <motion.button
+                                    whileHover={{y:-2}}
+                                    whileTap={{y:2}}
                                     onClick={()=>navigate(`/update/${_id}`)}
-                                    className="btn bg-gold text-seco hover:bg-gold-seco flex-1"
+                                    className={`border-none rounded ${isDarkMode ? "bg-dark-primary text-light-secondary":"bg-light-primary text-light-secondary"} flex-1`}
                                 >
                                     Update Movie
-                                </button>
+                                </motion.button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <button
-                onClick={() => navigate("/all")}
-                className="btn bg-pri my-10 mx-4 text-seco hover:bg-gold flex-1"
-            >
-                See all movie
-            </button>
         </div>
 
     )

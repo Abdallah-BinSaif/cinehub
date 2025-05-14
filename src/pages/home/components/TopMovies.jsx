@@ -12,7 +12,6 @@ const TopMovies = () => {
             .then(data => {
                 const sorted = data.sort((a , b)=> b.rating - a.rating)
                 setMovies(sorted.slice(0, 6))
-
             })
     }, []);
     return (

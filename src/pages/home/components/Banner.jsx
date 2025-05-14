@@ -1,6 +1,8 @@
-import React from "react";
+import useTheme from "../../../hooks/useTheme.jsx";
+
 
 const Banner = () => {
+    const {isDarkMode} = useTheme()
     const slides = [
         {
             id: 1,
@@ -23,39 +25,44 @@ const Banner = () => {
     ];
 
     return (
-        <div className="carousel rounded-xl w-full bg-base-200">
-            {slides.map((slide, index) => (
-                <div
-                    key={slide.id}
-                    id={`slide${index + 1}`}
-                    className="carousel-item relative w-full"
-                >
-                    <img
-                        src={slide.image}
-                        alt={slide.title}
-                        className="w-full object-cover"
-                    />
-                    <div className="absolute left-0 top-0 w-full h-full bg-black bg-opacity-50 flex flex-col justify-center items-center text-white">
-                        <h2 className="text-6xl text-pri font-bold">{slide.title}</h2>
-                        <p className="text-lg text-pri mt-2">{slide.description}</p>
+        <section className={"screen"}>
+            <div className="carousel rounded w-full">
+                {slides.map((slide, index) => (
+                    <div
+                        key={slide.id}
+                        id={`slide${index + 1}`}
+                        className="carousel-item relative w-full"
+                    >
+                        <img
+                            src={slide.image}
+                            alt={slide.title}
+                            className="w-full object-cover"
+                        />
+                        <div
+                            className={`absolute left-0 top-0 text-light-secondary w-full h-full bg-light-primary/30 flex flex-col justify-center items-center`}>
+                            <h2 className="text-6xl text-pri font-bold">{slide.title}</h2>
+                            <p className="text-lg text-pri mt-2">{slide.description}</p>
+                        </div>
+                        <div
+                            className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                            <a
+                                href={`#slide${index === 0 ? slides.length : index}`}
+                                className="btn btn-circle btn-sm"
+                            >
+                                ❮
+                            </a>
+                            <a
+                                href={`#slide${index === slides.length - 1 ? 1 : index + 2}`}
+                                className="btn btn-circle btn-sm"
+                            >
+                                ❯
+                            </a>
+                        </div>
                     </div>
-                    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a
-                            href={`#slide${index === 0 ? slides.length : index}`}
-                            className="btn btn-circle btn-sm"
-                        >
-                            ❮
-                        </a>
-                        <a
-                            href={`#slide${index === slides.length - 1 ? 1 : index + 2}`}
-                            className="btn btn-circle btn-sm"
-                        >
-                            ❯
-                        </a>
-                    </div>
-                </div>
-            ))}
-        </div>
+                ))}
+            </div>
+        </section>
+
     );
 };
 

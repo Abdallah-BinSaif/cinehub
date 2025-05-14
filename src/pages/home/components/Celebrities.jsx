@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import CelebrityCard from "../../../components/CelebrityCard.jsx";
 
 const Celebrities = () => {
@@ -13,7 +13,7 @@ const Celebrities = () => {
             })
     }, []);
     return (
-            <div className={"bg-gold-seco py-20 my-8"}>
+            <div className={"screen py-12 my-8"}>
                 <h3 className={"text-3xl mb-6 font-bold text-pri container mx-auto"}>Most Awarded Celebrities</h3>
                 <div className={"flex flex-col md:flex-row overflow-scroll gap-8 container mx-auto"}>
                     {

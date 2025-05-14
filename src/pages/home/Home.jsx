@@ -23,13 +23,7 @@ const Home = () => {
 
     return (
         <div>
-            <div className={"flex justify-end items-center"}>
-                Theme
-                <button onClick={handleTheme} className={"p-2 text-xl"}>{theme? <MdLightMode/>  : <MdOutlineLightMode/>}</button>
-            </div>
-            <div className={"container mx-auto"}>
-                <Banner/>
-            </div>
+            <Banner/>
 
             <TopMovies/>
 

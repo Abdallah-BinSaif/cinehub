@@ -40,7 +40,7 @@ const Navbar = () => {
                             {lists}
                         </ul>
                     </div>
-                    <a className={`text-3xl font-extrabold hover:cursor-pointer ${isDarkMode ? "text-dark-accent":"text-light-accent"}`}>CineHub</a>
+                    <a className={`text-3xl tracking-wider font-extrabold hover:cursor-pointer ${isDarkMode ? "text-dark-accent":"text-light-accent"}`}>CineHub</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="flex gap-8 px-1 font-semibold">
