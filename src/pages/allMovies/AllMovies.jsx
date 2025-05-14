@@ -15,12 +15,12 @@ const AllMovies = () => {
     //     console.log(e.target.value)
     // }
     return (
-        <section className={"screen"}>
+        <section className={"screen py-12"}>
 
-            <div className={"text-center text-5xl"}>
+            <div className={"text-center text-xl md:text-3xl lg:text-5xl mb-8"}>
                 <h2>Explore Your Movie</h2>
             </div>
-            <div className={"flex justify-center mt-8"}>
+            <div className={"flex justify-center "}>
                 <label className="input input-bordered border-pri hover:border-pri flex w-1/2 items-center gap-2">
                     <p className={"border-r border-gold pr-2 text-pri"}>Search </p>
 
