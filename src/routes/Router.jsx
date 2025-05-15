@@ -13,6 +13,7 @@ import Update from "../pages/updateMovie/Update.jsx";
 import BehindScenes from "../pages/behindTheScene/BehindScenes.jsx";
 import Dashboard from "../layouts/Dashboard.jsx";
 import Profile from "../pages/profile/Profile.jsx";
+import DHome from "../dashboard/pages/DHome.jsx";
 
 
 export const router = createBrowserRouter([
@@ -44,6 +45,9 @@ export const router = createBrowserRouter([
         errorElement: <NotFound/>,
         children:[
             {
+                path: "/dashboard/home",
+                element: <Private><DHome/></Private>
+            },{
                 path: "update/:id",
                 loader: ({params})=>fetch(`https://movie-portal-server-pink-one.vercel.app/cinemas/${params.id}`),
                 element: <Private><Update></Update></Private>

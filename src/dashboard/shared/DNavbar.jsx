@@ -8,7 +8,7 @@ const DNavbar = () => {
     const {currentUser,signOutUser} = useAuth();
 
     const lists = <>
-        <li><NavLink className={({isActive}) => isActive ? "text-light-accent" : ""} to={"/"}>Home</NavLink>
+        <li><NavLink className={({isActive}) => isActive ? "text-light-accent" : ""} to={"/dashboard/home"}>Home</NavLink>
         </li>
         <li><NavLink className={({isActive}) => isActive ? "text-light-accent" : ""} to={"/dashboard/add"}>Add
             Movie</NavLink></li>
@@ -16,15 +16,15 @@ const DNavbar = () => {
                      to={"/dashboard/favorites"}>Favourites</NavLink></li>
     </>
     const profileList = <>
-        <li><NavLink to={"/dashboard/profile"}>Profile</NavLink></li>
-        <li><NavLink to={"/dashboard"}>Dashboard</NavLink></li>
+        <li><NavLink className={({isActive}) => isActive ? "text-light-accent" : ""} to={"/dashboard/profile"}>Profile</NavLink></li>
+        <li><NavLink className={({isActive}) => isActive ? "text-light-accent" : ""} to={"/dashboard/home"}>Dashboard</NavLink></li>
 
     </>
     return (
         <>
             {/* upper dashboard*/}
             <div className={"overflow-y-hidden"}>
-                <a className={`text-3xl tracking-wider font-extrabold hover:cursor-pointer ${isDarkMode ? "text-dark-accent" : "text-light-accent"}`}>CineHub</a>
+                <Link to={"/"} className={`text-3xl tracking-wider font-extrabold hover:cursor-pointer ${isDarkMode ? "text-dark-accent" : "text-light-accent"}`}>CineHub</Link>
                 <ul className={`font-semibold space-y-2 mt-12 ${isDarkMode ? "" : ""}`}>
                     {lists}
                     <li>You added</li>
@@ -41,8 +41,8 @@ const DNavbar = () => {
                                 <motion.img
                                     whileHover={{scale: 1.1}}
                                     referrerPolicy={"no-referrer"}
-                                    alt={currentUser.displayName}
-                                    title={currentUser.displayName} src={currentUser.photoURL}/>
+                                    alt={currentUser?.displayName}
+                                    title={currentUser?.displayName} src={currentUser?.photoURL}/>
                             </div>
                         </div>
                         <ul

@@ -6,6 +6,7 @@ import {router} from "./routes/Router.jsx";
 import AuthProvider from "./provider/AuthProvider.jsx";
 import ThemeProvider from "./provider/ThemeProvider.jsx";
 import '@mantine/core/styles.css';
+import '@mantine/charts/styles.css';
 import {MantineProvider} from "@mantine/core";
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 
