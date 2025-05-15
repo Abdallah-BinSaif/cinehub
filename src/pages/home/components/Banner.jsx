@@ -26,7 +26,7 @@ const Banner = () => {
 
     return (
         <section className={"screen"}>
-            <div className="carousel h-[800px] rounded w-full">
+            <div className="carousel h-[600px] rounded w-full">
                 {slides.map((slide, index) => (
                     <div
                         key={slide.id}
