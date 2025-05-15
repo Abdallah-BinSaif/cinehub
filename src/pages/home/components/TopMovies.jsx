@@ -2,6 +2,7 @@ import { motion } from "motion/react"
 import MovieCard from "../../../components/MovieCard.jsx";
 import {useNavigate} from "react-router-dom";
 import useCinema from "../../../hooks/useCinema.jsx";
+import SectionHeading from "../../../components/SectionHeading.jsx";
 
 const TopMovies = () => {
     const navigate = useNavigate()
@@ -9,9 +10,8 @@ const TopMovies = () => {
 
     return (
         <section className={"screen"}>
-            <div className={"text-center"}>
-                <h3 className={"text-6xl mt-20 mb-14"}>Top Movies</h3>
-            </div>
+            <SectionHeading heading={"Top Movies"} subHeading={"Enjoy It"}/>
+
             <div className={"container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3"}>
                 {
                     movies?.map(item => <MovieCard key={item._id} movie={item}></MovieCard>)

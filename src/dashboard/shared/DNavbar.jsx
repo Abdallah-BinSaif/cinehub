@@ -12,8 +12,7 @@ const DNavbar = () => {
         </li>
         <li><NavLink className={({isActive}) => isActive ? "text-light-accent" : ""} to={"/dashboard/add"}>Add
             Movie</NavLink></li>
-        <li><NavLink className={({isActive}) => isActive ? "text-light-accent" : ""}
-                     to={"/dashboard/favorites"}>Favourites</NavLink></li>
+        <li><NavLink className={({isActive}) => isActive ? "text-light-accent" : ""} to={"/dashboard/favorites"}>Favourites</NavLink></li>
     </>
     const profileList = <>
         <li><NavLink className={({isActive}) => isActive ? "text-light-accent" : ""} to={"/dashboard/profile"}>Profile</NavLink></li>
@@ -27,7 +26,6 @@ const DNavbar = () => {
                 <Link to={"/"} className={`text-3xl tracking-wider font-extrabold hover:cursor-pointer ${isDarkMode ? "text-dark-accent" : "text-light-accent"}`}>CineHub</Link>
                 <ul className={`font-semibold space-y-2 mt-12 ${isDarkMode ? "" : ""}`}>
                     {lists}
-                    <li>You added</li>
                 </ul>
             </div>
             {/* Lower dashboard*/}

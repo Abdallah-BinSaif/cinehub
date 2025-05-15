@@ -1,4 +1,3 @@
-import {useState} from 'react';
 import Banner from "./components/Banner.jsx";
 import TopMovies from "./components/TopMovies.jsx";
 import Celebrities from "./components/Celebrities.jsx";

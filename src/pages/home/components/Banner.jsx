@@ -1,9 +1,8 @@
-import useTheme from "../../../hooks/useTheme.jsx";
+
 
 
 
 const Banner = () => {
-    // const {isDarkMode} = useTheme()
     const slides = [
         {
             id: 1,

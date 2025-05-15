@@ -1,6 +1,6 @@
-import useAuth from "../../hooks/useAuth.jsx";
+import useAuth from "../../../hooks/useAuth.jsx";
 import {format} from "date-fns";
-import useTheme from "../../hooks/useTheme.jsx";
+import useTheme from "../../../hooks/useTheme.jsx";
 
 
 const Profile = () => {

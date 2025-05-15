@@ -2,11 +2,11 @@ import {useContext, useState} from 'react';
 import { useForm } from "react-hook-form";
 import { Rating } from 'react-simple-star-rating'
 import Swal from "sweetalert2";
-import {authContext} from "../../provider/AuthProvider.jsx";
+import {authContext} from "../../../provider/AuthProvider.jsx";
 import {useLoaderData} from "react-router-dom";
-import useTheme from "../../hooks/useTheme.jsx";
+import useTheme from "../../../hooks/useTheme.jsx";
 import { motion } from "motion/react"
-import axiosSecure from "../../axios/SecureAxios.jsx";
+import axiosSecure from "../../../axios/SecureAxios.jsx";
 
 const Update = () => {
     const Mdata = useLoaderData();

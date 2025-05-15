@@ -1,10 +1,11 @@
 import {useEffect, useState} from "react";
 import BehindCard from "../../components/BehindCard.jsx";
-import { FreeMode, Pagination, Navigation } from 'swiper/modules';
+import { FreeMode, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
 import {Swiper,SwiperSlide} from "swiper/react";
+import SectionHeading from "../../components/SectionHeading.jsx";
 const BehindScenes = () => {
     const [explosive, setExplosive] = useState([]);
     useEffect(() => {
@@ -14,10 +15,10 @@ const BehindScenes = () => {
                 setExplosive(data)
             })
     }, []);
-    console.log(explosive)
+    // console.log(explosive)
     return (
-        <div className={"screen py-12"}>
-            <h2 className={"text-center text-xl md:text-3xl lg:text-5xl mb-8"}>Explore What Happen Behind</h2>
+        <section className={"screen"}>
+            <SectionHeading heading={"Explore What Happen Behind"} subHeading={"explore movies"}/>
             <Swiper
                 slidesPerView={3}
 
@@ -41,7 +42,7 @@ const BehindScenes = () => {
                     </SwiperSlide> )
                 }
             </Swiper>
-        </div>
+        </section>
     );
 };
 

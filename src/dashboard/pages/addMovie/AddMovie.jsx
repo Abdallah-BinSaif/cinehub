@@ -1,11 +1,14 @@
-import React, {useContext, useState} from 'react';
+import  {useContext, useState} from 'react';
 import { useForm } from "react-hook-form";
 import { Rating } from 'react-simple-star-rating'
 import Swal from "sweetalert2";
-import {authContext} from "../../provider/AuthProvider.jsx";
-import secureAxios from "../../axios/SecureAxios.jsx";
+import {authContext} from "../../../provider/AuthProvider.jsx";
+import secureAxios from "../../../axios/SecureAxios.jsx";
+import useTheme from "../../../hooks/useTheme.jsx";
+import SectionHeading from "../../../components/SectionHeading.jsx";
 
 const AddMovie = () => {
+    const {isDarkMode} = useTheme();
     const {currentUser} = useContext(authContext)
     const [rating, setRating] = useState(0)
     const {
@@ -29,9 +32,8 @@ const AddMovie = () => {
 
     return (
         <div className={"container mx-auto my-8"}>
-            <div className={"text-center"}>
-                <h2 className={"text-5xl my-8"}>Add a movie</h2>
-            </div>
+            <SectionHeading heading={"Add a Movie"} subHeading={"the movie you like most"} />
+
             <form
                 onSubmit={handleSubmit((formData) => {
                     const addedMovie = {...formData, rating, year, duration, addedBy:currentUser?.email}
@@ -76,7 +78,7 @@ const AddMovie = () => {
                             })}
                             type={"url"}
                             placeholder={"poster Url"}
-                            className={"w-full border no-hover-color text-light-text"}
+                            className={"w-full border-light-secondary border no-hover-color text-light-text"}
                         /><br/>
                         <p className={"text-red-500"}>{errors.poster?.message}</p>
                     </div>
@@ -94,7 +96,7 @@ const AddMovie = () => {
                             })}
                             type={"text"}
                             placeholder={"Poster Title"}
-                            className={"w-full  border no-hover-color text-light-text"}
+                            className={"w-full border-light-secondary border no-hover-color text-light-text"}
                         /><br/>
                         <p className={"text-error"}>{errors.title?.message}</p>
                     </div>
@@ -105,7 +107,7 @@ const AddMovie = () => {
                 <div className={"flex flex-col md:flex-row items-end gap-4 "}>
                     <div className={"md:w-1/3 rounded-lg flex flex-col"}>
                         <legend className="fieldset-legend">Browsers</legend>
-                        <select className={"py-3 border no-hover-color text-light-text"} {...register("genre")}>
+                        <select className={"py-3 border-light-secondary border no-hover-color text-light-text"} {...register("genre")}>
                             <option disabled={true} value={""}>Select Genre</option>
                             {
                                 genre.map((item, idx) => <option key={idx} value={`${item}`}>{item}</option>)
@@ -126,13 +128,13 @@ const AddMovie = () => {
                             })}
                             type={"number"}
                             placeholder={"Duration (minute)"}
-                            className={"w-full py-3 border no-hover-color text-light-text"}
+                            className={"w-full border-light-secondary py-3 border no-hover-color text-light-text"}
                         /><br/>
-                        <p className={"text-error"}>{errors.duration?.message}</p>
+                        <p className={"text-error absolute"}>{errors.duration?.message}</p>
                     </div>
                     <div className={"md:w-1/3"}>
                         <legend className="fieldset-legend">Release Year</legend>
-                        <select className={"py-3 w-full border no-hover-color text-light-text"} {...register("year")}>
+                        <select className={`py-3 border-light-secondary w-full border no-hover-color text-light-text`} {...register("year")}>
                             <option disabled={true} value="">Select a Year</option>
                             {
                                 years.map((year, idx) => <option key={idx} value={year}>{year}</option>)
@@ -146,12 +148,16 @@ const AddMovie = () => {
                 <div className={"flex flex-col justify-center items-center"}>
                     <label>Rate this Movie</label>
                     <Rating
+                        fillColor={"#2f27ce"}
                         iconsCount={10}
                         onClick={handleRating}
                     ></Rating>
                 </div>
                 <br/> <br/>
                 <div>
+                    <div className={"label"}>
+                        <label className={""}>Movie Length</label>
+                    </div>
                     <textarea
                         {...register("summary", {
                             required: "this is required",
@@ -162,12 +168,14 @@ const AddMovie = () => {
                         })}
                         rows={5}
                         placeholder={"write the summary of the movie"}
-                        className={"w-full border no-hover-color text-light-text"}
+                        className={"w-full border-light-secondary border no-hover-color text-light-text"}
                     /><br/>
-                    <p className={"text-error"}>{errors.summary?.message}</p>
-                </div><br/>
+                    <p className={"absolute text-error"}>{errors.summary?.message}</p>
+                </div>
+                <br/>
 
-                <input className={"btn bg-gold-seco hover:bg-gold w-full"} type={"submit"} value={"Add Movie"}/>
+                <input className={`btnOutline ${isDarkMode ? "text-dark-primary" : "text-light-primary"} w-full`}
+                       type={"submit"} value={"Add Movie"}/>
             </form>
         </div>
     );

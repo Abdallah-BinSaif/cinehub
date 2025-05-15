@@ -2,6 +2,7 @@ import {useEffect, useState} from 'react';
 import MovieCard from "../../components/MovieCard.jsx";
 import axiosSecure from "../../axios/SecureAxios.jsx";
 import Swal from "sweetalert2";
+import SectionHeading from "../../components/SectionHeading.jsx";
 
 const AllMovies = () => {
     const [movies, setMovies] = useState(null)
@@ -21,12 +22,11 @@ const AllMovies = () => {
     }, [search]);
 
     return (
-        <section className={"screen py-12"}>
+        <section className={"screen"}>
 
-            <div className={"text-center text-xl md:text-3xl lg:text-5xl mb-8"}>
-                <h2>Explore Your Movie</h2>
-            </div>
-            <div className={"flex justify-center "}>
+            <SectionHeading heading={"Explore Your Movie"} subHeading={"Search Your Movie"}/>
+
+            <div className={"flex justify-center pb-8"}>
                 <label className="input input-bordered border-pri hover:border-pri flex w-1/2 items-center gap-2">
                     <p className={"border-r border-gold pr-2 text-pri"}>Search </p>
 

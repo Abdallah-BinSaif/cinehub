@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react';
 import CelebrityCard from "../../../components/CelebrityCard.jsx";
+import SectionHeading from "../../../components/SectionHeading.jsx";
 
 const Celebrities = () => {
     const [celebrity, setCelebrity] = useState([])
@@ -13,15 +14,16 @@ const Celebrities = () => {
             })
     }, []);
     return (
-            <div className={"screen py-12 my-8"}>
-                <h3 className={"text-3xl mb-6 font-bold text-pri container mx-auto"}>Most Awarded Celebrities</h3>
+            <section className={"screen"}>
+                <SectionHeading heading={"Most Awarded Celebrities"} subHeading={"Focus on them"}/>
+
                 <div className={"flex flex-col md:flex-row overflow-scroll gap-8 container mx-auto"}>
                     {
                         celebrity?.map((item, idx) => <CelebrityCard key={idx} celebrity={item}/>)
                     }
 
                 </div>
-            </div>
+            </section>
     );
 };
 

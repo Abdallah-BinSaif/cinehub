@@ -9,7 +9,7 @@ const MainLayout = () => {
     return (
         <div className={`min-h-screen ${isDarkMode ? "dark-mode":"light-mode"}`}>
             <Navbar/>
-            <div className={"min-h-[calc(100vh-346px)]"}>
+            <div className={"min-h-[calc(100vh-397px)]"}>
                 <Outlet/>
             </div>
             <Footer/>

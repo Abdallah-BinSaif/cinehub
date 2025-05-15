@@ -6,6 +6,10 @@
     color: inherit !important;
 }
 
+section{
+    margin-bottom: 100px;
+}
+
 .dark-mode{
     background-color: #010104;
     color: #eae9fc;
