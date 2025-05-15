@@ -13,32 +13,34 @@ const MovieDetails = () => {
     const navigate = useNavigate();
     const [movieData, setMovieData] = useState({});
     const {id}= useParams()
-    console.log(id,conf.vercelURL)
-    const movie = useLoaderData();
-    console.log(movie)
     const {currentUser} = useAuth();
     const {isDarkMode} = useTheme();
 
     useEffect(() => {
         axiosSecure.get(`/cinemas/${id}`)
-            .then(res=> setMovieData(res))
-            .catch(err=>console.log(err))
+            .then(res=> setMovieData(res.data))
+            .catch(err=>Swal.fire(`${err.code}`))
     }, [id]);
-    console.log(movieData)
 
-    const {duration, genre, poster, rating, summary, title, year, _id} = movie || {}
+    const {duration, genre, poster, rating, summary, title, year, _id} = movieData || {}
 
     const handleDelete = (id) => {
         axiosSecure.delete(`cinemas/${id}`)
             .then(res => {
-                // todo: add a swal based on deleted count
-                console.log(res)
+                // Done: add a swal based on deleted count
+                if(res.data.deletedCount){
+                    navigate("/all")
+                    Swal.fire("Deleted from Data base List")
+                }
+                else{
+                    Swal.fire("Can't delete this item")
+                }
             })
     }
     const handleFavorite = (id) => {
         const movieId = id;
-        console.log(id)
-        // TODO: it don't work properly
+
+        // DONE: it don't work properly
         axiosSecure.patch("/favorites", {movieId,
             duration,
             genre,

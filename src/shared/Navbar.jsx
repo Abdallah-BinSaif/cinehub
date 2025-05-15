@@ -18,7 +18,6 @@ const profileList = <>
 const Navbar = () => {
     const {currentUser, signOutUser} = useAuth();
     const {isDarkMode, toggleDarkMode} = useTheme();
-    // console.log(isDarkMode)
     return (
         <header className={`sticky top-0 z-10 ${isDarkMode ? "bg-dark-secondary":"bg-light-secondary"}`}>
             <div className="navbar screen">

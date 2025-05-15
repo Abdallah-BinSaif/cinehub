@@ -10,11 +10,9 @@ const SocialLogin = ({going}) => {
 
     const handleGoogleSignIn = () => {
         signInWithGoogle().then(result => {
-            // const user = result.user;
             navigate(going)
             Swal.fire(`Hi! ${result.user.displayName}`)
 
-            // console.log(user)
         }).catch(err=>{
             Swal.fire(`${err.code}`)
         })

@@ -15,7 +15,6 @@ const BehindScenes = () => {
                 setExplosive(data)
             })
     }, []);
-    // console.log(explosive)
     return (
         <section className={"screen"}>
             <SectionHeading heading={"Explore What Happen Behind"} subHeading={"explore movies"}/>

@@ -14,10 +14,7 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation()
 
-    const going = location?.state?.from || "/"
-    console.log(going)
-
-
+    const going = location?.state?.from || "/";
 
     return (
 
@@ -29,9 +26,7 @@ const Login = () => {
                     <form onSubmit={handleSubmit((data)=>{
                         const {email, password}=data
                         signInUser(email, password).then(()=>{
-                            // console.log(userdata)
                             Swal.fire("Login Successful")
-                            // done: location update
                             navigate(going)
                         })
                             .catch(err => {
@@ -40,7 +35,6 @@ const Login = () => {
                                 }
                             })
 
-                        console.log(data)
                     })} className="">
 
                         <div className="form-control">

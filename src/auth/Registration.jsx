@@ -27,10 +27,10 @@ const Registration = () => {
                     <div className={"divider mt-10"}>OR</div>
                     <form onSubmit={handleSubmit((data) => {
                         const {name, email, password, photo} = data
-                        createUser(email, password).then(data => {
-                            updateUser({displayName: name, photoURL: photo}).then().catch(err => console.log(err.code))
-                            const {uid} = data?.user
-                            const {lastSignInTime, creationTime} = data?.user?.metadata
+                        createUser(email, password).then(() => {
+                            updateUser({displayName: name, photoURL: photo})
+                                .then().catch(err => Swal.fire(err.code))
+
                             Swal.fire("Registration Completed")
                             navigate("/")
                         }).catch(err => {

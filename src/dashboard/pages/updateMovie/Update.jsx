@@ -10,9 +10,7 @@ import axiosSecure from "../../../axios/SecureAxios.jsx";
 
 const Update = () => {
     const Mdata = useLoaderData();
-    console.log(Mdata)
     const {isDarkMode} = useTheme()
-
     const {currentUser} = useContext(authContext)
     const [rating, setRating] = useState(Mdata.rating)
     const {

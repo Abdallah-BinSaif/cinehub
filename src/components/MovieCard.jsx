@@ -9,8 +9,6 @@ const MovieCard = ({movie, handleFavDelete}) => {
     const location = useLocation();
     const goToDetail = location?.pathname?.split("/")[1] === "dashboard" ? "/dashboard/details":"/details"
 
-    const btnFab = location?.pathname === "/dashboard/favorites" || "/favorites"
-    console.log(btnFab)
 
     const {duration, genre, poster, rating, summary, title, year, _id} = movie
     return (
