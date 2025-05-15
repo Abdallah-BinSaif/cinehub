@@ -10,7 +10,7 @@ const lists = <>
 
 </>
 const profileList = <>
-    <li><NavLink to={"/profile"}>Profile</NavLink></li>
+    <li><NavLink to={"/dashboard/profile"}>Profile</NavLink></li>
     <li><NavLink to={"/dashboard"}>Dashboard</NavLink></li>
 
 </>

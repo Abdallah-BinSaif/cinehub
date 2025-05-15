@@ -159,7 +159,7 @@ const Update = () => {
                             placeholder={"Duration (minute)"}
                             className={"w-full"}
                         /><br/>
-                        <p className={"text-red-500"}>{errors.duration?.message}</p>
+                        <p className={"text-error"}>{errors.duration?.message}</p>
                     </div>
                     <select className={"md:w-1/3 p-2 text-light-text"} {...register("year")}>
                         <option disabled={true} value="">Select a Year</option>
@@ -190,7 +190,7 @@ const Update = () => {
                         })}
                         rows={5}
                         placeholder={"write the summary of the movie"}
-                        className={"w-full "}
+                        className={"w-full no-hover-color text-light-text"}
                     /><br/>
                     <p className={"text-red-500"}>{errors.summary?.message}</p>
                 </div><br/>

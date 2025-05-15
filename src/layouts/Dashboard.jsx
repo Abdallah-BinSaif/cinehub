@@ -6,11 +6,11 @@ const Dashboard = () => {
     const {isDarkMode} = useTheme()
     return (
         <div className={`${isDarkMode ? "dark-mode":"light-mode"}`}>
-            <div className={"flex"}>
-                <div className={"pl-24 pt-8 pb-8 w-2/12 border-r-2 border-dark-primary min-h-screen flex flex-col justify-between"}>
+            <div className={"flex justify-end"}>
+                <div className={"pl-24 pt-8 pb-8 fixed left-0 z-10 w-2/12 border-r-2 border-dark-primary min-h-screen flex flex-col justify-between"}>
                     <DNavbar/>
                 </div>
-                <div className={"pr-24 w-9/12 min-h-screen"}>
+                <div className={"pr-44 w-9/12 min-h-screen"}>
                     <Outlet/>
                 </div>
             </div>

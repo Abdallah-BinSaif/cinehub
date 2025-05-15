@@ -34,15 +34,6 @@ const MovieDetails = () => {
                 // todo: add a swal based on deleted count
                 console.log(res)
             })
-        // fetch(`https://movie-portal-server-pink-one.vercel.app/cinemas/${id}`,{
-        //     method: 'DELETE',
-        // })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         console.log(data)
-        //         navigate("/all")
-        //         Swal.fire("Deleted From Cinema List")
-        //     })
     }
     const handleFavorite = (id) => {
         const movieId = id;
@@ -65,31 +56,6 @@ const MovieDetails = () => {
                 })
                 }
             })
-        // fetch(`https://movie-portal-server-pink-one.vercel.app/favorites`,{
-        //     method: "PATCH",
-        //     headers: {
-        //         "content-type": "application/json"
-        //     },
-        //     body: JSON.stringify({
-        //         movieId,
-        //         duration,
-        //         genre,
-        //         poster,
-        //         rating,
-        //         summary,
-        //         title,
-        //         year,
-        //         favoriteEmail: currentUser.email
-        //     })
-        // })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         if(data.upsertedCount){
-        //             Swal.fire(`${title} added to Favorite list`)
-        //         }else if(data.matchedCount){
-        //             Swal.fire(`${title} already exist in Favorite list`)
-        //         }
-        //     })
     }
 
     return (
@@ -148,7 +114,7 @@ const MovieDetails = () => {
                                 <motion.button
                                     whileHover={{y:-2}}
                                     whileTap={{y:2}}
-                                    onClick={()=>navigate(`/update/${_id}`)}
+                                    onClick={()=>navigate(`/dashboard/update/${_id}`)}
                                     className={`border-none rounded ${isDarkMode ? "bg-dark-primary text-light-secondary":"bg-light-primary text-light-secondary"} flex-1`}
                                 >
                                     Update Movie

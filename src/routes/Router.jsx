@@ -12,6 +12,7 @@ import Favorites from "../pages/favorite/Favorites.jsx";
 import Update from "../pages/updateMovie/Update.jsx";
 import BehindScenes from "../pages/behindTheScene/BehindScenes.jsx";
 import Dashboard from "../layouts/Dashboard.jsx";
+import Profile from "../pages/profile/Profile.jsx";
 
 
 export const router = createBrowserRouter([
@@ -55,6 +56,10 @@ export const router = createBrowserRouter([
             },{
                 path: "details/:id",
                 element: <Private><MovieDetails/></Private>
+            },
+            {
+                path: "profile",
+                element: <Private><Profile/></Private>
             }
         ],
     },
