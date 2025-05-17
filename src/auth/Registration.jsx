@@ -5,6 +5,8 @@ import {useForm} from "react-hook-form";
 import {authContext} from "../provider/AuthProvider.jsx";
 import Swal from "sweetalert2";
 import SocialLogin from "./SocialLogin.jsx";
+import useAuth from "../hooks/useAuth.jsx";
+import useAxiosSecure from "../hooks/useAxiosSecure.jsx";
 
 const Registration = () => {
     const {register,
@@ -14,7 +16,8 @@ const Registration = () => {
     const navigate = useNavigate();
     const going = location?.state?.from || "/"
 
-    const {createUser,updateUser}=useContext(authContext);
+    const {createUser,updateUser}=useAuth();
+    const secureAxios = useAxiosSecure();
 
     return (
         <div className="">
@@ -27,7 +30,15 @@ const Registration = () => {
                     <div className={"divider mt-10"}>OR</div>
                     <form onSubmit={handleSubmit((data) => {
                         const {name, email, password, photo} = data
-                        createUser(email, password).then(() => {
+                        createUser(email, password).then((res) => {
+
+                            secureAxios.post("/users",{email, role:"user", uid:res.user.uid, accountCreated: res.user.metadata.createdAt})
+                                .then(res=>{
+                                    console.log(res.data)
+                                }).catch(err=>{
+                                    console.log(err.code)
+                            })
+
                             updateUser({displayName: name, photoURL: photo})
                                 .then().catch(err => Swal.fire(err.code))
 

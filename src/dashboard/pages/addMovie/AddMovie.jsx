@@ -1,4 +1,4 @@
-import  {useContext, useState} from 'react';
+import {useContext, useRef, useState} from 'react';
 import { useForm } from "react-hook-form";
 import { Rating } from 'react-simple-star-rating'
 import Swal from "sweetalert2";
@@ -6,16 +6,23 @@ import {authContext} from "../../../provider/AuthProvider.jsx";
 import secureAxios from "../../../axios/SecureAxios.jsx";
 import useTheme from "../../../hooks/useTheme.jsx";
 import SectionHeading from "../../../components/SectionHeading.jsx";
+import conf from "../../../conf/conf.js";
+import axios from "axios";
+import {FileInput} from "@mantine/core";
+import {IconPhotoUp} from "@tabler/icons-react";
 
 const AddMovie = () => {
+    const bb_hosting_api = `https://api.imgbb.com/1/upload?key=${conf.imageBBKey}`
     const {isDarkMode} = useTheme();
     const {currentUser} = useContext(authContext)
     const [rating, setRating] = useState(0)
+    const [backdrop, setBackdrop] = useState()
     const {
         register,
         handleSubmit,
-        formState:{errors},
-        watch} = useForm()
+        formState:{errors}
+    } = useForm()
+
 
     const genre = ["Adventure", "Action", "Horror", "Drama", "Romance", "Mystery", "Thriller", "Action", "Sci-Fi","Historical", "Family","Fantasy"]
     const years = [2024, 2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2013, 2012, 2011, 2010, 2009, 2008, 2007, 2006, 2005, 2004, 2003, 2002, 2001, 2000, 1999, 1998, 1997, 1996, 1995, 1994, 1993, 1992, 1991, 1990, 1989, 1988, 1987, 1986, 1985, 1984, 1983, 1982, 1981, 1980]
@@ -24,49 +31,87 @@ const AddMovie = () => {
     const handleRating = (rate) => {
 
         setRating(rate)
+
     }
-
-    const year = parseInt(watch("year"))
-    const duration = parseInt(watch("duration"))
-
 
     return (
         <div className={"container mx-auto my-8"}>
             <SectionHeading heading={"Add a Movie"} subHeading={"the movie you like most"} />
-
+            <FileInput
+                label={"BackDrop Image"}
+                leftSection={<IconPhotoUp size={20} />}
+                name={"backdrop"}
+                placeholder={"upload image"}
+                value={backdrop}
+                withAsterisk={true}
+                onChange={setBackdrop}
+            />
             <form
                 onSubmit={handleSubmit((formData) => {
-                    const addedMovie = {...formData, rating, year, duration, addedBy:currentUser?.email}
-                    if(rating){
-                        secureAxios.post("/cinemas",addedMovie)
-                            .then(data => {
-                                if(data.data.acknowledged){
-                                    Swal.fire({
-                                        title: "Added",
-                                        text: "The movie added to the database.",
-                                        icon: "success"
-                                    });
-                                }
-                            })
-                            .catch(err=> {
-                                Swal.fire({
-                                    title: "ERROR",
-                                    text: `${err.code}`,
-                                    icon: "error"
-                                })
-                            })
-                    }else{
-                        Swal.fire({
-                            title: "Rating",
-                            text: "Please Rate this movie to proceed.",
-                            icon: "question"
-                        });
-                    }
+
+                    console.log(formData)
+
+                    // todo: the comment should be uncomment;
+
+                    // if(rating){
+                    //     axios.post(`${bb_hosting_api}`, {image: backdrop},{
+                    //         headers:{
+                    //             "content-type": "multipart/form-data"
+                    //         }
+                    //     })
+                    //         .then(res => {
+                    //             if(res.data.success){
+                    //                 const movieData = {
+                    //                         duration: parseInt(formData.duration),
+                    //                         genre: formData.genre,
+                    //                         poster_url: formData.poster,
+                    //                         summary: formData.summary,
+                    //                         title: formData.title,
+                    //                         year: parseInt(formData.year),
+                    //                         addedBy: currentUser.email,
+                    //                         rating,
+                    //                         backdrop_url: res.data.data.display_url,
+                    //                     }
+                    //
+                    //                 secureAxios.post("/cinemas",movieData)
+                    //                     .then(data => {
+                    //                         if(data.data.acknowledged){
+                    //                             Swal.fire({
+                    //                                 title: "Added",
+                    //                                 text: "The movie added to the database.",
+                    //                                 icon: "success"
+                    //                             });
+                    //                         }
+                    //                     })
+                    //                     .catch(err=> {
+                    //                         Swal.fire({
+                    //                             title: "ERROR",
+                    //                             text: `${err.code}`,
+                    //                             icon: "error"
+                    //                         })
+                    //                     })
+                    //
+                    //             }
+                    //         })
+                    //         .catch(err => Swal.fire(err.code))
+                    //
+                    //
+                    //
+                    // }else{
+                    //     Swal.fire({
+                    //         title: "Rating",
+                    //         text: "Please Rate this movie to proceed.",
+                    //         icon: "question"
+                    //     });
+                    // }
                 })}
-                className={"p-8 bg-third rounded-lg"}>
+                className={"p-8 rounded-lg"}>
 
 
                 {/*Input row*/}
+                {/*<input  className={"bg-light-secondary"} value={backdrop} onChange={setBackdrop} type={"file"} {...register("backdrop",{required:"Please Select a photo"})} />*/}
+
+
                 <div className={"flex flex-col md:flex-row gap-4"}>
                     <div className={"md:w-1/2"}>
                         <div className={"label"}>
