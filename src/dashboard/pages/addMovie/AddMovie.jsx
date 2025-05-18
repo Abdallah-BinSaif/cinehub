@@ -123,7 +123,7 @@ const AddMovie = () => {
                             })}
                             type={"url"}
                             placeholder={"poster Url"}
-                            className={"w-full border-light-secondary border no-hover-color text-light-text"}
+                            className={"w-full border-light-secondary border text-light-text"}
                         /><br/>
                         <p className={"text-red-500"}>{errors.poster?.message}</p>
                     </div>
@@ -141,7 +141,7 @@ const AddMovie = () => {
                             })}
                             type={"text"}
                             placeholder={"Poster Title"}
-                            className={"w-full border-light-secondary border no-hover-color text-light-text"}
+                            className={"w-full border-light-secondary border text-light-text"}
                         /><br/>
                         <p className={"text-error"}>{errors.title?.message}</p>
                     </div>
@@ -151,8 +151,8 @@ const AddMovie = () => {
                 {/*Input row*/}
                 <div className={"flex flex-col md:flex-row items-end gap-4 "}>
                     <div className={"md:w-1/3 rounded-lg flex flex-col"}>
-                        <legend className="fieldset-legend">Browsers</legend>
-                        <select className={"py-3 border-light-secondary border no-hover-color text-light-text"} {...register("genre")}>
+                        <legend className="fieldset-legend">Genre</legend>
+                        <select className={"py-3 border-light-secondary border text-light-text"} {...register("genre")}>
                             <option disabled={true} value={""}>Select Genre</option>
                             {
                                 genre.map((item, idx) => <option key={idx} value={`${item}`}>{item}</option>)
@@ -173,13 +173,13 @@ const AddMovie = () => {
                             })}
                             type={"number"}
                             placeholder={"Duration (minute)"}
-                            className={"w-full border-light-secondary py-3 border no-hover-color text-light-text"}
+                            className={"w-full border-light-secondary py-3 border text-light-text"}
                         /><br/>
                         <p className={"text-error absolute"}>{errors.duration?.message}</p>
                     </div>
                     <div className={"md:w-1/3"}>
                         <legend className="fieldset-legend">Release Year</legend>
-                        <select className={`py-3 border-light-secondary w-full border no-hover-color text-light-text`} {...register("year")}>
+                        <select className={`py-3 border-light-secondary w-full border text-light-text`} {...register("year")}>
                             <option disabled={true} value="">Select a Year</option>
                             {
                                 years.map((year, idx) => <option key={idx} value={year}>{year}</option>)
@@ -213,7 +213,7 @@ const AddMovie = () => {
                         })}
                         rows={5}
                         placeholder={"write the summary of the movie"}
-                        className={"w-full border-light-secondary border no-hover-color text-light-text"}
+                        className={"w-full border-light-secondary border text-light-text"}
                     /><br/>
                     <p className={"absolute text-error"}>{errors.summary?.message}</p>
                 </div>
