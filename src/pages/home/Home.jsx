@@ -2,6 +2,7 @@ import Banner from "./components/Banner.jsx";
 import TopMovies from "./components/TopMovies.jsx";
 import Celebrities from "./components/Celebrities.jsx";
 import MetaScore from "./components/MetaScore.jsx";
+import Subscription from "./subscription/Subscription.jsx";
 
 const Home = () => {
 
@@ -12,6 +13,8 @@ const Home = () => {
             <TopMovies/>
 
             <Celebrities/>
+
+            <Subscription/>
 
             <MetaScore/>
         </div>
