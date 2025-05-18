@@ -21,14 +21,14 @@ const Favorites = () => {
             })
     }
     return (
-        <div>
+        <section className={"screen"}>
             <SectionHeading heading={"Favorites Items"} subHeading={"stay with us"} />
             <div className={"container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 px-8 gap-3"}>
                 {
                     favorites?.map(item => <MovieCard key={item._id} movie={item} handleFavDelete={handleFavDelete}></MovieCard>)
                 }
             </div>
-        </div>
+        </section>
     );
 };
 

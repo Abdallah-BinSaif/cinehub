@@ -10,9 +10,9 @@ const DHome = () => {
     const {currentUser} = useAuth();
     return (
         <section className={"flex justify-center"}>
-            <aria className={"w-2/3"}>
+            <div className={"mx-4 md:ml-32 md:mr-32"}>
                 <SectionHeading heading={`Hi ${currentUser?.displayName}`} subHeading={"welcome!"}/>
-                <div className={"flex gap-3"}>
+                <div className={"flex flex-col md:flex-row gap-3"}>
                     <Card1 title={"You Added Movie"} count={23}/>
                     <Card1 title={"Your Favourite Movie"} count={4}/>
                     <Card1 title={"You Watched Movie"} count={12}/>
@@ -21,7 +21,7 @@ const DHome = () => {
                     <Charts/>
 
                 </div>
-            </aria>
+            </div>
 
         </section>
     );

@@ -16,12 +16,11 @@ const BehindScenes = () => {
             })
     }, []);
     return (
-        <section className={"screen"}>
+        <section className={"screen px-4"}>
             <SectionHeading heading={"Explore What Happen Behind"} subHeading={"explore movies"}/>
             <Swiper
                 slidesPerView={3}
-
-                spaceBetween={30}
+                spaceBetween={15}
                 freeMode={true}
                 pagination={{
                     clickable: true,
@@ -32,7 +31,7 @@ const BehindScenes = () => {
             >
                 {
                     // TODO: here id should me a problem have to change
-                    explosive.map(item => <SwiperSlide key={item.id}>
+                    explosive.map(item => <SwiperSlide className={""} key={item.id}>
                         <BehindCard
                                     title={item.title}
                                     duration={item.duration}

@@ -17,7 +17,7 @@ const Celebrities = () => {
             <section className={"screen"}>
                 <SectionHeading heading={"Most Awarded Celebrities"} subHeading={"Focus on them"}/>
 
-                <div className={"flex flex-col md:flex-row overflow-scroll gap-8 container mx-auto"}>
+                <div className={"flex flex-col md:flex-row pr-4 md:overflow-scroll gap-12 md:gap-8 container mx-auto"}>
                     {
                         celebrity?.map((item, idx) => <CelebrityCard key={idx} celebrity={item}/>)
                     }

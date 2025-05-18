@@ -26,9 +26,9 @@ const AllMovies = () => {
 
             <SectionHeading heading={"Explore Your Movie"} subHeading={"Search Your Movie"}/>
 
-            <div className={"flex justify-center pb-8"}>
-                <label className="input input-bordered border-pri hover:border-pri flex w-1/2 items-center gap-2">
-                    <p className={"border-r border-gold pr-2 text-pri"}>Search </p>
+            <div className={"w-full lg:flex justify-center pb-8 px-4"}>
+                <label className="input input-bordered hover:border-pri flex w-full md:w-1/2 items-center gap-2 ">
+                    <p className={"border-r pr-2 text-light-accent"}>Search </p>
 
                     <input placeholder={"Popcorn ready? Let's Find a movie"} onChange={(e)=>setSearch(e.target.value)} type="text" className="w-full text-gold"/>
                 </label>

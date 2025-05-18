@@ -5,7 +5,7 @@ const BehindCard = ({thumbnail, title,duration}) => {
     const {isDarkMode} = useTheme()
     return (
         <div
-            className="relative min-w-64 h-64 rounded-lg overflow-hidden shadow-md bg-cover bg-center mb-12"
+            className="relative  h-64 rounded-lg overflow-hidden shadow-md bg-cover bg-center mb-12"
             style={{backgroundImage: `url(${thumbnail})`}}
         >
             {/* Play Button */}

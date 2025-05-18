@@ -12,7 +12,7 @@ const MovieCard = ({movie, handleFavDelete}) => {
 
     const {duration, genre, poster, rating, summary, title, year, _id} = movie
     return (
-        <div className={`rounded shadow-xl duration-300 transition border ${isDarkMode ? "border-dark-primary hover:shadow-dark-primary":"border-light-secondary hover:shadow-light-secondary"}  hover:shadow-2xl`}>
+        <div className={`rounded duration-300 transition border mx-4 ${isDarkMode ? "border-dark-primary hover:shadow-dark-primary":"border-light-secondary hover:shadow-light-secondary"}  hover:shadow-2xl`}>
             <figure className="px-4 pt-4">
                 <motion.img whileHover={{scale:1.02}} src={poster} alt={title} className="rounded-xl w-full h-56 object-cover" />
             </figure>

@@ -4,9 +4,9 @@ import useTheme from "../hooks/useTheme.jsx";
 import { motion } from "motion/react"
 
 const lists = <>
-    <li><NavLink className={({isActive})=> isActive ? "text-light-accent":"" } to={"/"}>Home</NavLink></li>
-    <li><NavLink className={({isActive})=> isActive ? "text-light-accent":"" } to={"/all"}>All Movies</NavLink></li>
-    <li><NavLink className={({isActive})=> isActive ? "text-light-accent":"" } to={"/behind"}>Behind the Scenes</NavLink></li>
+    <li className={"px-5"}><NavLink className={({isActive})=> isActive ? "text-light-accent":"" } to={"/"}>Home</NavLink></li>
+    <li className={"px-5"}><NavLink className={({isActive})=> isActive ? "text-light-accent":"" } to={"/all"}>All Movies</NavLink></li>
+    <li className={"px-5"}><NavLink className={({isActive})=> isActive ? "text-light-accent":"" } to={"/behind"}>Behind the Scenes</NavLink></li>
 
 </>
 const profileList = <>
@@ -24,7 +24,7 @@ const Navbar = () => {
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button"
-                             className="btn btn-ghost hover:bg-gold hover:text-seco lg:hidden">
+                             className="px-3 lg:hidden">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="h-5 w-5"
@@ -40,7 +40,7 @@ const Navbar = () => {
                         </div>
                         <ul
                             tabIndex={0}
-                            className="dropdown-content z-[1] mt-3 w-52 p-2 shadow">
+                            className={`dropdown-content z-[10] mt-4 -ml-2 w-52 py-3 rounded-b shadow-lg ${isDarkMode ? "bg-dark-secondary":"bg-light-secondary"}`}>
                             {lists}
                         </ul>
                     </div>
@@ -52,7 +52,7 @@ const Navbar = () => {
                     </ul>
                 </div>
 
-                <div className={"navbar-end gap-4"}>
+                <div className={"navbar-end gap-4 pr-3"}>
                     <button onClick={toggleDarkMode}
                             className={`m-2 p-1 px-3 ${isDarkMode ? "border-dark-primary" : "border-light-primary"} border-2 rounded-full`}>
                         {

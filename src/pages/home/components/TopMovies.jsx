@@ -12,7 +12,7 @@ const TopMovies = () => {
         <section className={"screen"}>
             <SectionHeading heading={"Top Movies"} subHeading={"Enjoy It"}/>
 
-            <div className={"container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3"}>
+            <div className={"container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-3"}>
                 {
                     movies?.map(item => <MovieCard key={item._id} movie={item}></MovieCard>)
                 }

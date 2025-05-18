@@ -22,14 +22,14 @@ const DNavbar = () => {
     return (
         <>
             {/* upper dashboard*/}
-            <div className={"overflow-y-hidden"}>
+            <div className={""}>
                 <Link to={"/"} className={`text-3xl tracking-wider font-extrabold hover:cursor-pointer ${isDarkMode ? "text-dark-accent" : "text-light-accent"}`}>CineHub</Link>
                 <ul className={`font-semibold space-y-2 mt-12 ${isDarkMode ? "" : ""}`}>
                     {lists}
                 </ul>
             </div>
             {/* Lower dashboard*/}
-            <div className={`${isDarkMode? "bg-dark-secondary":"bg-light-secondary"} rounded-l-full px-4 pt-2 flex items-center justify-between`}>
+            <div className={`${isDarkMode? "bg-dark-secondary":"bg-light-secondary"} rounded-l-full px-4 mb-8 flex items-center justify-between`}>
 
                 {
                     currentUser &&

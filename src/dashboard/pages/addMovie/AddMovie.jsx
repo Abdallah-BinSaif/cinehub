@@ -35,17 +35,17 @@ const AddMovie = () => {
     }
 
     return (
-        <div className={"container mx-auto my-8"}>
+        <div className={"screen"}>
             <SectionHeading heading={"Add a Movie"} subHeading={"the movie you like most"} />
-            <FileInput
-                label={"BackDrop Image"}
-                leftSection={<IconPhotoUp size={20} />}
-                name={"backdrop"}
-                placeholder={"upload image"}
-                value={backdrop}
-                withAsterisk={true}
-                onChange={setBackdrop}
-            />
+            {/*<FileInput*/}
+            {/*    label={"BackDrop Image"}*/}
+            {/*    leftSection={<IconPhotoUp size={20} />}*/}
+            {/*    name={"backdrop"}*/}
+            {/*    placeholder={"upload image"}*/}
+            {/*    value={backdrop}*/}
+            {/*    withAsterisk={true}*/}
+            {/*    onChange={setBackdrop}*/}
+            {/*/>*/}
             <form
                 onSubmit={handleSubmit((formData) => {
 
@@ -113,7 +113,7 @@ const AddMovie = () => {
 
 
                 <div className={"flex flex-col md:flex-row gap-4"}>
-                    <div className={"md:w-1/2"}>
+                    <div className={"w-full lg:w-1/2"}>
                         <div className={"label"}>
                             <label className={"px-2"}>Poster</label>
                         </div>
@@ -127,7 +127,7 @@ const AddMovie = () => {
                         /><br/>
                         <p className={"text-red-500"}>{errors.poster?.message}</p>
                     </div>
-                    <div className={"md:w-1/2"}>
+                    <div className={"w-full lg:w-1/2"}>
                         <div className={"label"}>
                             <label className={"px-2"}>Movie Title</label>
                         </div>
@@ -149,7 +149,7 @@ const AddMovie = () => {
                 <br/>
 
                 {/*Input row*/}
-                <div className={"flex flex-col md:flex-row items-end gap-4 "}>
+                <div className={"flex flex-col md:flex-row md:items-end gap-4 "}>
                     <div className={"md:w-1/3 rounded-lg flex flex-col"}>
                         <legend className="fieldset-legend">Genre</legend>
                         <select className={"py-3 border-light-secondary border text-light-text"} {...register("genre")}>
@@ -159,9 +159,9 @@ const AddMovie = () => {
                             }
                         </select>
                     </div>
-                    <div className={"md:w-1/3 space-x-2"}>
+                    <div className={"md:w-1/3 md:space-x-2"}>
                         <div className={"label"}>
-                            <label className={"px-3"}>Movie Length</label>
+                            <label className={"md:px-3"}>Movie Length</label>
                         </div>
                         <input
                             {...register("duration", {
