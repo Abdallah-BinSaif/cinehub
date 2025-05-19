@@ -3,6 +3,7 @@ import TopMovies from "./components/TopMovies.jsx";
 import Celebrities from "./components/Celebrities.jsx";
 import MetaScore from "./components/MetaScore.jsx";
 import Subscription from "./subscription/Subscription.jsx";
+import Kids from "./kids/Kids.jsx";
 
 const Home = () => {
 
@@ -11,6 +12,8 @@ const Home = () => {
             <Banner/>
 
             <TopMovies/>
+
+            <Kids/>
 
             <Celebrities/>
 
