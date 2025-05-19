@@ -21,7 +21,7 @@ const Registration = () => {
 
     return (
         <div className="">
-            <div className="loginBG flex flex-col justify-center items-center">
+            <div className="loginBG flex flex-col justify-center items-center object-cover object-center">
                 <div className="">
                     <h2 className="text-5xl font-bold">Register now!</h2>
                 </div>
@@ -33,11 +33,7 @@ const Registration = () => {
                         createUser(email, password).then((res) => {
 
                             secureAxios.post("/users",{email, role:"user", uid:res.user.uid, accountCreated: res.user.metadata.createdAt})
-                                .then(res=>{
-                                    console.log(res.data)
-                                }).catch(err=>{
-                                    console.log(err.code)
-                            })
+
 
                             updateUser({displayName: name, photoURL: photo})
                                 .then().catch(err => Swal.fire(err.code))

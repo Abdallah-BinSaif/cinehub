@@ -1,5 +1,4 @@
 import {Swiper, SwiperSlide} from "swiper/react";
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
@@ -32,10 +31,10 @@ const Banner = () => {
         <section className={"screen"}>
             <Swiper navigation={true} modules={[Navigation]} className={"swiper h-[600px]"}>
                 {
-                    slides.map(slide => <SwiperSlide style={{backgroundImage: `url("${slide.image}")`}} key={slide.id}>
+                    slides.map(slide => <SwiperSlide style={{backgroundImage: `url("${slide.image}")`, backgroundSize: "cover", backgroundPosition: "center"}} key={slide.id}>
                         <div
-                            className={`h-full ${isDarkMode ? "" : ""} text-light-secondary flex flex-col justify-center items-center`}>
-                            <div className={" px-36 py-24 shadow-2xl rounded bg-light-secondary/60 text-light-accent text-center"}>
+                            className={`h-full ${isDarkMode ? "" : ""} text-light-secondary flex justify-center items-center`}>
+                            <div className={"px-8 py-4 md:px-16 md:py-12 lg:px-36 lg:py-24 shadow-2xl rounded bg-light-secondary/60 text-light-accent text-center"}>
                                 <h2 className="text-6xl font-bold">{slide.title}</h2>
                                 <p className="text-lg mt-2">{slide.description}</p>
                             </div>

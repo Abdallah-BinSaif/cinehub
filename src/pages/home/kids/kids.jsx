@@ -22,34 +22,37 @@ const KidsSection = () => {
         <section className="screen">
             {/* Section Title */}
             <SectionHeading heading={"Kids Corner"} subHeading={"Enjoy your show"}/>
-            <Swiper slidesPerView={1}
-                    spaceBetween={10}
-                    pagination={{
-                        clickable: true,
-                    }}
-                    breakpoints={{
-                        640: {
-                            slidesPerView: 1,
-                            spaceBetween: 20,
-                        },
-                        768: {
-                            slidesPerView: 5,
-                            spaceBetween: 40,
-                        },
-                        1024: {
-                            slidesPerView: 6,
-                            spaceBetween: 50,
-                        },
-                    }}
-                    modules={[Pagination]}
-                    className="mySwiper"
-            >
-                {
-                    kidContent?.map(item => (<SwiperSlide className={"mb-8"} key={item.id}>
-                        <KidContentCard item={item}/>
-                    </SwiperSlide>))
-                }
-            </Swiper>
+            <div className="px-4">
+                <Swiper slidesPerView={1}
+                        spaceBetween={20}
+                        pagination={{
+                            clickable: true,
+                        }}
+                        breakpoints={{
+                            640: {
+                                slidesPerView: 1,
+                                spaceBetween: 20,
+                            },
+                            768: {
+                                slidesPerView: 5,
+                                spaceBetween: 40,
+                            },
+                            1024: {
+                                slidesPerView: 6,
+                                spaceBetween: 50,
+                            },
+                        }}
+                        modules={[Pagination]}
+                        className="mySwiper"
+                >
+                    {
+                        kidContent?.map(item => (<SwiperSlide className={"mb-8"} key={item.id}>
+                            <KidContentCard item={item}/>
+                        </SwiperSlide>))
+                    }
+                </Swiper>
+            </div>
+
         </section>
     );
 };

@@ -14,7 +14,7 @@ const TopMovies = () => {
 
             <div className={"container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-3"}>
                 {
-                    movies?.map(item => <MovieCard key={item._id} movie={item}></MovieCard>)
+                    movies.slice(0,4)?.map(item => <MovieCard key={item._id} movie={item}></MovieCard>)
                 }
             </div>
             <div className={"flex justify-center items-center"}>

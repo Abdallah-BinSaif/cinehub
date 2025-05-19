@@ -7,7 +7,7 @@ import {useState} from "react";
 const Dashboard = () => {
     const {isDarkMode} = useTheme()
     const [isShowMenu, setIsShowMenu] =useState(false)
-    console.log(isShowMenu)
+
     return (
         <div className={`${isDarkMode ? "dark-mode":"light-mode"}`}>
             <div className={"flex lg:justify-end"}>
