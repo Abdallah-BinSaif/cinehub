@@ -12,7 +12,7 @@ const DHome = () => {
         <section className={"flex justify-center"}>
             <div className={"mx-4 md:ml-32 md:mr-32"}>
                 <SectionHeading heading={`Hi ${currentUser?.displayName}`} subHeading={"welcome!"}/>
-                <div className={"flex flex-col md:flex-row gap-3"}>
+                <div className={"flex flex-col w-full md:flex-row gap-4"}>
                     <Card1 title={"You Added Movie"} count={23}/>
                     <Card1 title={"Your Favourite Movie"} count={4}/>
                     <Card1 title={"You Watched Movie"} count={12}/>

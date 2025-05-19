@@ -1,6 +1,7 @@
 
-import { FaInstagram, FaTwitter } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
 import useTheme from "../hooks/useTheme.jsx";
+import { FaXTwitter} from "react-icons/fa6";
 
 const CelebrityCard = ({ celebrity }) => {
     const { name, photo, awards, socialMedia } = celebrity;
@@ -32,7 +33,7 @@ const CelebrityCard = ({ celebrity }) => {
                             rel="noopener noreferrer"
                             className="text-2xl"
                         >
-                            <FaTwitter />
+                            <FaXTwitter />
                         </a>
                     )}
                 </div>

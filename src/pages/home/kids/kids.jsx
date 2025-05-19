@@ -23,14 +23,14 @@ const KidsSection = () => {
             {/* Section Title */}
             <SectionHeading heading={"Kids Corner"} subHeading={"Enjoy your show"}/>
             <div className="px-4">
-                <Swiper slidesPerView={1}
+                <Swiper slidesPerView={2}
                         spaceBetween={20}
                         pagination={{
                             clickable: true,
                         }}
                         breakpoints={{
                             640: {
-                                slidesPerView: 1,
+                                slidesPerView: 2,
                                 spaceBetween: 20,
                             },
                             768: {
