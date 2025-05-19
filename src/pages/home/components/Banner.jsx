@@ -35,7 +35,7 @@ const Banner = () => {
                     slides.map(slide => <SwiperSlide style={{backgroundImage: `url("${slide.image}")`}} key={slide.id}>
                         <div
                             className={`h-full ${isDarkMode ? "" : ""} text-light-secondary flex flex-col justify-center items-center`}>
-                            <div className={" px-36 py-24 bg-gradient- from-40% from-light-secondary text-center"}>
+                            <div className={" px-36 py-24 shadow-2xl rounded bg-light-secondary/60 text-light-accent text-center"}>
                                 <h2 className="text-6xl font-bold">{slide.title}</h2>
                                 <p className="text-lg mt-2">{slide.description}</p>
                             </div>

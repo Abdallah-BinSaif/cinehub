@@ -49,61 +49,88 @@ const AddMovie = () => {
             <form
                 onSubmit={handleSubmit((formData) => {
 
-                    console.log(formData)
+                    if(rating){
+                        const movieData = {
+                            duration: parseInt(formData.duration),
+                            genre: formData.genre,
+                            poster_url: formData.poster,
+                            summary: formData.summary,
+                            title: formData.title,
+                            year: parseInt(formData.year),
+                            addedBy: currentUser.email,
+                            rating,
+                            // backdrop_url: res.data.data.display_url,
+                        }
 
-                    // todo: the comment should be uncomment;
+                        secureAxios.post("/cinemas",movieData)
+                            .then(data => {
+                                if(data.data.acknowledged){
+                                    Swal.fire({
+                                        title: "Added",
+                                        text: "The movie added to the database.",
+                                        icon: "success"
+                                    });
+                                }
+                            })
+                            .catch(err=> {
+                                Swal.fire({
+                                    title: "ERROR",
+                                    text: `${err.code}`,
+                                    icon: "error"
+                                })
+                            })
 
-                    // if(rating){
-                    //     axios.post(`${bb_hosting_api}`, {image: backdrop},{
-                    //         headers:{
-                    //             "content-type": "multipart/form-data"
-                    //         }
-                    //     })
-                    //         .then(res => {
-                    //             if(res.data.success){
-                    //                 const movieData = {
-                    //                         duration: parseInt(formData.duration),
-                    //                         genre: formData.genre,
-                    //                         poster_url: formData.poster,
-                    //                         summary: formData.summary,
-                    //                         title: formData.title,
-                    //                         year: parseInt(formData.year),
-                    //                         addedBy: currentUser.email,
-                    //                         rating,
-                    //                         backdrop_url: res.data.data.display_url,
-                    //                     }
-                    //
-                    //                 secureAxios.post("/cinemas",movieData)
-                    //                     .then(data => {
-                    //                         if(data.data.acknowledged){
-                    //                             Swal.fire({
-                    //                                 title: "Added",
-                    //                                 text: "The movie added to the database.",
-                    //                                 icon: "success"
-                    //                             });
-                    //                         }
-                    //                     })
-                    //                     .catch(err=> {
-                    //                         Swal.fire({
-                    //                             title: "ERROR",
-                    //                             text: `${err.code}`,
-                    //                             icon: "error"
-                    //                         })
-                    //                     })
-                    //
-                    //             }
-                    //         })
-                    //         .catch(err => Swal.fire(err.code))
-                    //
-                    //
-                    //
-                    // }else{
-                    //     Swal.fire({
-                    //         title: "Rating",
-                    //         text: "Please Rate this movie to proceed.",
-                    //         icon: "question"
-                    //     });
-                    // }
+                        // todo: the comment should be uncomment. (update continue);
+                        // axios.post(`${bb_hosting_api}`, {image: backdrop},{
+                        //     headers:{
+                        //         "content-type": "multipart/form-data"
+                        //     }
+                        // })
+                        //     .then(res => {
+                        //         if(res.data.success){
+                        //             // const movieData = {
+                        //             //         duration: parseInt(formData.duration),
+                        //             //         genre: formData.genre,
+                        //             //         poster_url: formData.poster,
+                        //             //         summary: formData.summary,
+                        //             //         title: formData.title,
+                        //             //         year: parseInt(formData.year),
+                        //             //         addedBy: currentUser.email,
+                        //             //         rating,
+                        //             //         // backdrop_url: res.data.data.display_url,
+                        //             //     }
+                        //             //
+                        //             // secureAxios.post("/cinemas",movieData)
+                        //             //     .then(data => {
+                        //             //         if(data.data.acknowledged){
+                        //             //             Swal.fire({
+                        //             //                 title: "Added",
+                        //             //                 text: "The movie added to the database.",
+                        //             //                 icon: "success"
+                        //             //             });
+                        //             //         }
+                        //             //     })
+                        //             //     .catch(err=> {
+                        //             //         Swal.fire({
+                        //             //             title: "ERROR",
+                        //             //             text: `${err.code}`,
+                        //             //             icon: "error"
+                        //             //         })
+                        //             //     })
+                        //
+                        //         }
+                        //     })
+                        //     .catch(err => Swal.fire(err.code))
+
+
+
+                    }else{
+                        Swal.fire({
+                            title: "Rating",
+                            text: "Please Rate this movie to proceed.",
+                            icon: "question"
+                        });
+                    }
                 })}
                 className={"p-8 rounded-lg"}>
 

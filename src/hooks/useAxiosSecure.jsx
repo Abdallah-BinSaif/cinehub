@@ -3,7 +3,7 @@ import conf from "../conf/conf.js";
 
 
 const axiosSecure = axios.create({
-    baseURL: String(conf.localServerURL)
+    baseURL: String(conf.vercelURL)
 
 })
 
