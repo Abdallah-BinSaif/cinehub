@@ -21,72 +21,75 @@ const Login = () => {
 
     return (
 
-            <div className="loginBG flex flex-col justify-center items-center">
-                <div className="">
-                    <h2 className="text-5xl font-bold">Login now!</h2>
-                </div>
-                <div className="px-4 w-full lg:w-4/12">
-                    <form onSubmit={handleSubmit((data)=>{
-                        const {email, password}=data;
+            <div className="loginBG bg-fixed  border border-light-primary ">
 
-                        secureAxios.get(`/users/${email}`)
-                            .then(res => {
-                                if(res.data === email){
-                                    signInUser(email, password).then(()=>{
-                                        Swal.fire("Login Successful")
-                                        navigate(going)
-                                    }).catch(err => {
-                                        if(err){
-                                            Swal.fire("Login Failed")
-                                        }
-                                    })
-                                }
-                            })
-                            .catch(err => Swal.fire(err.response.data))
+                <div className={"flex flex-col justify-center items-center py-24"}>
+                    <div className="">
+                        <h2 className="text-5xl font-bold">Login now!</h2>
+                    </div>
+                    <div className="px-4 w-full lg:w-4/12">
+                        <form onSubmit={handleSubmit((data) => {
+                            const {email, password} = data;
 
-                    })} className="">
+                            secureAxios.get(`/users/${email}`)
+                                .then(res => {
+                                    if (res.data === email) {
+                                        signInUser(email, password).then(() => {
+                                            Swal.fire("Login Successful")
+                                            navigate(going)
+                                        }).catch(err => {
+                                            if (err) {
+                                                Swal.fire("Login Failed")
+                                            }
+                                        })
+                                    }
+                                })
+                                .catch(err => Swal.fire(err.response.data))
 
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="">Email</span>
-                            </label>
-                            <input type="email" {...register("email", {
-                                required: "Email is required"
-                            }) }
-                                   placeholder="email"
-                                   className=""
-                                   required/>
-                            <p>{errors?.email?.message}</p>
-                        </div>
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="">Password</span>
-                            </label>
-                            <input
-                                type="password"
-                                {...register("password", {
-                                    required: "Give a Password",
+                        })} className="">
+
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="">Email</span>
+                                </label>
+                                <input type="email" {...register("email", {
+                                    required: "Email is required"
                                 })}
-                                placeholder="password"
-                                className="text-black py-2 px-2" required/>
-                            <p className={"text-red"}>{errors?.password?.message}</p>
+                                       placeholder="email"
+                                       className=""
+                                       required/>
+                                <p>{errors?.email?.message}</p>
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="">Password</span>
+                                </label>
+                                <input
+                                    type="password"
+                                    {...register("password", {
+                                        required: "Give a Password",
+                                    })}
+                                    placeholder="password"
+                                    className="text-black py-2 px-2" required/>
+                                <p className={"text-red"}>{errors?.password?.message}</p>
 
+                                <label className="label">
+                                    <button className="font-semibold">Forgot password?</button>
+                                </label>
+                            </div>
+                            <div className="form-control mt-6">
+                                <button className="bg-light-primary btnFilled text-white">Login</button>
+                            </div>
                             <label className="label">
-                                <button className="font-semibold">Forgot password?</button>
+                                <Link
+                                    className={"hover:underline no-hover-color font-semibold"}
+                                    to={"/register"}>New in CineMovie? Register</Link>
                             </label>
-                        </div>
-                        <div className="form-control mt-6">
-                            <button className="bg-light-primary btnFilled text-white">Login</button>
-                        </div>
-                        <label className="label">
-                            <Link
-                                className={"hover:underline no-hover-color font-semibold"}
-                                to={"/register"}>New in CineMovie? Register</Link>
-                        </label>
-                    </form>
-                    <div className={"divider"}>OR</div>
-                    <SocialLogin going={going}/>
+                        </form>
+                        <div className={"divider"}>OR</div>
+                        <SocialLogin going={going}/>
 
+                    </div>
                 </div>
             </div>
 

@@ -57,7 +57,7 @@ input{
 /* background Images */
 .loginBG{
     color: white;
-    height: calc(100vh);
+    /*height: calc(100vh);*/
     object-fit: cover;
     background-image: url("./assets/loginbg.jpg");
 }

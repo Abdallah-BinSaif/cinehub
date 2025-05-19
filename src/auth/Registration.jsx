@@ -21,7 +21,7 @@ const Registration = () => {
 
     return (
         <div className="">
-            <div className="loginBG flex flex-col justify-center items-center object-cover object-center">
+            <div className="loginBG flex flex-col justify-center items-center object-cover object-center py-24">
                 <div className="">
                     <h2 className="text-5xl font-bold">Register now!</h2>
                 </div>
